@@ -57,3 +57,13 @@ String? confirmPasswordValidator(String? value, String? password) {
   }
   return null;
 }
+
+String? confirmOTPValidator(String? value, String? otp){
+  if (value!.trim().isEmpty) {
+    return "Bạn chưa nhập OTP";
+  }
+  else if (value.length != 6) {
+    return "OTP phải có 6 ký tự";
+  }
+  return null;
+}

@@ -1,5 +1,4 @@
-
-import 'package:ex_project/sign_up/sign_up_page.dart';
+import 'package:ex_project/router_name.dart';
 import 'package:ex_project/sign_up/validator.dart';
 import 'package:flutter/material.dart';
 
@@ -92,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     onPressed: () {
+                      Navigator.pushNamed(context, RouterName.forgot_password_1);
                     },
                     child: const Text(
                         'Forgot password?',
@@ -113,13 +113,14 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: LoginButton(
-                onPressed: () async {
+                onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           'Form is valid, ${_formKey.currentState?.validate()}'),
                     )
                     );
+                    Navigator.pushNamed(context, '/happy_deals');
                   }
                 },
                 title: 'Login',
@@ -128,9 +129,7 @@ class _LoginPageState extends State<LoginPage> {
             /// TEXT BUTTON
             TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignUpPage()),
+                  Navigator.pushNamed(context, RouterName.sign_up_page,
                   );
                 },
                 child: const Text(

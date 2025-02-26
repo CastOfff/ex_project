@@ -13,7 +13,11 @@ class _HappyDealsState extends State<HappyDeals> {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            leading: const Icon(Icons.keyboard_backspace, size: 30,),
+            leading: IconButton(onPressed: () {
+              Navigator.pop(context);
+            }
+              , icon: Icon(Icons.keyboard_backspace, size: 30),
+            )
           ),
           body: Padding(
             padding: const EdgeInsets.all(20.0),
