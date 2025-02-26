@@ -1,7 +1,6 @@
 
 import 'package:ex_project/sign_up/validator.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../color.dart';
 import '../local_storage_learn/user.dart';
@@ -124,17 +123,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     user1.email = _emailController.text;
                     user1.password = _passwordController.text;
                     user1.confirmPassword = _confirmPasswordController.text;
-                    await _userPreferences.saveUser(user1);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           'Form is valid, ${_formKey.currentState?.validate()}'),
-                    )
-                    );
+                    ));
+                    await _userPreferences.saveUser(user1);
                   }
                 },
                 title: 'Sign up',
               ),
             ),
+
             /// TEXT BUTTON
             TextButton(
               onPressed: () {

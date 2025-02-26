@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                       ),
-                      Text(
+                      const Text(
                         'Remember me',
                         style: TextStyle(
                           color: Colors.black,
