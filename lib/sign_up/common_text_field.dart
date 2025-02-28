@@ -37,7 +37,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
       onTapOutside: (event) {
         widget.focusNode?.unfocus();
       },
-      obscureText: _obscureText ?? false,
+      obscureText: _obscureText,
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
       controller: widget.controller,

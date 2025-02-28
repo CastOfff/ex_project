@@ -128,9 +128,17 @@ class _LoginPageState extends State<LoginPage> {
             ),
             /// TEXT BUTTON
             TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RouterName.sign_up_page,
+                onPressed: () async {
+                  final result = await Navigator.pushNamed(
+                    context,
+                    RouterName.sign_up_page
                   );
+
+                  if (result != null && result is String){
+                    setState(() {
+                      _phoneController.text = result;
+                    });
+                  }
                 },
                 child: const Text(
                   'New here? Register',

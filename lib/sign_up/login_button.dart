@@ -26,7 +26,7 @@ class _LoginButtonState extends State<LoginButton> {
           maximumSize: const Size(double.infinity, 50),
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
         ),
-        child: Text(widget.title, style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),)
+        child: Text(widget.title, style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 20),)
     );
   }
 }

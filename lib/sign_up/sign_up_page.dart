@@ -123,7 +123,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     user1.email = _emailController.text;
                     user1.password = _passwordController.text;
                     user1.confirmPassword = _confirmPasswordController.text;
-                    Navigator.pop(context);
+                    String phoneNumber = _phoneController.text;
+                    Navigator.pop(context, phoneNumber);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           'Form is valid, ${_formKey.currentState?.validate()}'),
