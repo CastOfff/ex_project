@@ -1,5 +1,4 @@
-
-import 'package:ex_project/sign_up/validator.dart';
+import 'package:ex_project/authentication/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../color.dart';

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'large_discounts_page.dart';
+import 'router/router_name.dart';
+
 class HappyDeals extends StatefulWidget {
   const HappyDeals({super.key});
 
@@ -16,7 +19,7 @@ class _HappyDealsState extends State<HappyDeals> {
             leading: IconButton(onPressed: () {
               Navigator.pop(context);
             }
-              , icon: Icon(Icons.keyboard_backspace, size: 30),
+              , icon: const Icon(Icons.keyboard_backspace, size: 30),
             )
           ),
           body: Padding(
@@ -54,7 +57,7 @@ class _HappyDealsState extends State<HappyDeals> {
 
 Widget buildCard1(BuildContext context) {
   return Container(
-      margin: EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.symmetric(vertical: 4),
       width: double.infinity,
       height: 140,
       decoration: BoxDecoration(
@@ -70,7 +73,7 @@ Widget buildCard1(BuildContext context) {
       ),
       child: Stack(
         children: [
-          ClipRRect(
+          const ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20)),
             child: Image(image: AssetImage('assets/images/pngegg.png'), fit: BoxFit.cover),
           ),
@@ -109,7 +112,7 @@ Widget buildCard1(BuildContext context) {
 
 Widget buildCard2(BuildContext context) {
   return Container(
-      margin: EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.symmetric(vertical: 4),
       width: double.infinity,
       height: 140,
       decoration: BoxDecoration(
@@ -124,7 +127,7 @@ Widget buildCard2(BuildContext context) {
       ),
       child: Stack(
         children: [
-          Align(
+          const Align(
             alignment: Alignment.bottomRight,
             child: ClipRRect(
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
@@ -147,14 +150,16 @@ Widget buildCard2(BuildContext context) {
                     Text('OFF', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
                   ],
                 ),
-                Text('No Upper Limit!', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
+                const Text('No Upper Limit!', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
                 const SizedBox(height: 5,),
                 CircleAvatar(
                   backgroundColor: Colors.white24,
                   maxRadius: 12,
                   minRadius: 9,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouterName.largeDiscountsPage);
+                    },
                     icon: const Icon(Icons.arrow_forward_ios_outlined, color: Colors.white, size: 9,),
                   ),
                 ),

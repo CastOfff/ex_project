@@ -1,18 +1,18 @@
 
-import 'package:ex_project/sign_up/validator.dart';
+import 'package:ex_project/authentication/validator.dart';
 import 'package:flutter/material.dart';
-import '../router_name.dart';
+import '../router/router_name.dart';
 import 'common_text_field.dart';
 import 'login_button.dart';
 
-class ForgotPassword2 extends StatefulWidget {
-  const ForgotPassword2({super.key});
+class VerifyOTP extends StatefulWidget {
+  const VerifyOTP({super.key});
 
   @override
-  State<ForgotPassword2> createState() => _ForgotPassword2State();
+  State<VerifyOTP> createState() => _VerifyOTPState();
 }
 
-class _ForgotPassword2State extends State<ForgotPassword2> {
+class _VerifyOTPState extends State<VerifyOTP> {
   final _formKey = GlobalKey<FormState>();
   final _otpController = TextEditingController();
   @override
@@ -92,7 +92,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
               child: LoginButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    Navigator.pushNamed(context, RouterName.forgot_password_3);
+                    Navigator.pushNamed(context, RouterName.newPassWordPage);
                   }
                 },
                 title: 'VERIFY',

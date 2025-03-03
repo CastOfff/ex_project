@@ -1,5 +1,5 @@
-import 'package:ex_project/router_name.dart';
-import 'package:ex_project/sign_up/validator.dart';
+import 'package:ex_project/authentication/validator.dart';
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
 import 'common_text_field.dart';
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RouterName.forgot_password_1);
+                      Navigator.pushNamed(context, RouterName.getOTP);
                     },
                     child: const Text(
                         'Forgot password?',
@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Form is valid, ${_formKey.currentState?.validate()}'),
                     )
                     );
-                    Navigator.pushNamed(context, '/happy_deals');
+                    Navigator.pushNamed(context, RouterName.happyDeals);
                   }
                 },
                 title: 'Login',
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () async {
                   final result = await Navigator.pushNamed(
                     context,
-                    RouterName.sign_up_page
+                    RouterName.signUpPage
                   );
 
                   if (result != null && result is String){

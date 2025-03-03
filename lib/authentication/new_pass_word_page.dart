@@ -1,18 +1,18 @@
 
-import 'package:ex_project/router_name.dart';
-import 'package:ex_project/sign_up/validator.dart';
+import 'package:ex_project/authentication/validator.dart';
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 import 'common_text_field.dart';
 import 'login_button.dart';
 
-class ForgotPassword3 extends StatefulWidget {
-  const ForgotPassword3({super.key});
+class NewPassWordPage extends StatefulWidget {
+  const NewPassWordPage({super.key});
 
   @override
-  State<ForgotPassword3> createState() => _ForgotPassword4State();
+  State<NewPassWordPage> createState() => _ForgotPassword4State();
 }
 
-class _ForgotPassword4State extends State<ForgotPassword3> {
+class _ForgotPassword4State extends State<NewPassWordPage> {
   final _formKey = GlobalKey<FormState>();
   final _newPasswordController = TextEditingController();
   final _confirmNewPasswordController = TextEditingController();
@@ -82,7 +82,7 @@ class _ForgotPassword4State extends State<ForgotPassword3> {
               child: LoginButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    Navigator.pushNamed(context, RouterName.forgot_password_4);
+                    Navigator.pushNamed(context, RouterName.successPage);
                   }
                 },
                 title: 'SAVE',

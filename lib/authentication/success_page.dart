@@ -1,15 +1,15 @@
-import 'package:ex_project/router_name.dart';
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 import 'login_button.dart';
 
-class ForgotPassword4 extends StatefulWidget {
-  const ForgotPassword4({super.key});
+class SuccessPage extends StatefulWidget {
+  const SuccessPage({super.key});
 
   @override
-  State<ForgotPassword4> createState() => _ForgotPassword4State();
+  State<SuccessPage> createState() => _SuccessPageState();
 }
 
-class _ForgotPassword4State extends State<ForgotPassword4> {
+class _SuccessPageState extends State<SuccessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ class _ForgotPassword4State extends State<ForgotPassword4> {
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    RouterName.login_page,
+                    RouterName.loginPage,
                     (Route<dynamic> route) => false,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
