@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'local_storage_learn/user_preferences.dart';
 import 'nearby_restaurants_page.dart';
 import 'onboard/onboard_page/onboard_page.dart';
+import 'our_restaurant_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const OurRestaurantPage(),
       // initialRoute: RouterName.loginPage,
       // onGenerateRoute: RouteGenerator.generateRoute
     );

@@ -119,7 +119,10 @@ class _HomePageState extends State<HomePage> {
               TitleHomeScreen(title: 'Our Restaurant',),
               Column(
                 spacing: 11,
-                children: List.generate(3, (index) => OurRestaurant()),
+                children: List.generate(3, (index) => OurRestaurant(
+                  name: restaurantList[index]['name'],
+                  address: restaurantList[index]['address'],
+                )),
               ),
               TitleHomeScreen(title: 'Happy deal',),
               SizedBox(
