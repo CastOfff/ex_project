@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'dart:math';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 void main() {
   runApp(MyApp());
 }
@@ -22,56 +23,42 @@ class AnimatedScreen extends StatefulWidget {
 
 class _AnimatedScreenState extends State<AnimatedScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 3),
-    )..repeat(reverse: false);
-
-    _animation = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-  }
-
+  List<dynamic> users = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(0, MediaQuery.of(context).size.height * _animation.value),
-                  child: Transform.rotate(
-                    angle: _controller.value * 2 * pi,
-                    child: child,
-                  ),
-                );
-              },
-              child: Center(
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  child: Image(image: AssetImage('assets/images/pngegg.png'), fit: BoxFit.cover),
+        appBar: AppBar(
+          title: Text('heellllo'),
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  var url = Uri.https('67caf9da3395520e6af3dbc6.mockapi.io', 'users');
+                  var response = await http.get(url);
+                  final listJson = json.decode(response.body);
+                  setState(() {
+                    users = json.decode(response.body);
+                  });
+                  print(listJson.runtimeType);
+                },
+                icon: Icon(Icons.refresh))
+          ],
+        ),
+        body: ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            var user = users[index];
+            return Card(
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(user['avatar']),
                 ),
+                title: Text(user['name'], style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text(user['email']),
               ),
-            ),
-          ),
-        ],
-      ),
+            );
+          },
+        ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
