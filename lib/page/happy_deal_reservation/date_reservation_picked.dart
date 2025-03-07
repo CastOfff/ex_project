@@ -5,12 +5,12 @@ import '../../date_time.dart';
 
 class DateReservationPicked extends StatefulWidget {
   final DateTime today;
-  DateTime daysInMonth;
-  Color backgroundColor ;
-  Color borderColor;
-  Color textColor;
-  double borderWidth;
-  DateReservationPicked({
+  final DateTime daysInMonth;
+  final Color backgroundColor ;
+  final Color borderColor;
+  final Color textColor;
+  final double borderWidth;
+  const DateReservationPicked({
     super.key,
     required this.today,
     required this.daysInMonth,
@@ -36,7 +36,7 @@ class _DateReservationPickedState extends State<DateReservationPicked> {
           width: widget.borderWidth,
           color: widget.borderColor
         ),
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(50),
         color: widget.backgroundColor,
       ),
       child: Column(

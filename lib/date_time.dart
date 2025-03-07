@@ -13,13 +13,13 @@ List<Map<String, dynamic>> monthsOfYear = [
   {"number": 12, "name": "December"}
 ];
 List<String> weekdays = [
-  'MO', // Thứ Hai
-  'TU', // Thứ Ba
-  'WE', // Thứ Tư
-  'TH', // Thứ Năm
-  'FR', // Thứ Sáu
-  'SA', // Thứ Bảy
-  'SU', // Chủ Nhật
+  'MO',
+  'TU',
+  'WE',
+  'TH',
+  'FR',
+  'SA',
+  'SU',
 ];
 List<String> timeSlots = [
   '08:00 - 08:30',
