@@ -1,7 +1,7 @@
 import 'package:ex_project/color.dart';
 import 'package:ex_project/happy_deals.dart';
-import 'package:ex_project/home/home_page.dart';
 import 'package:ex_project/large_discounts_page.dart';
+import 'package:ex_project/page/happy_deal_reservation/happy_deal_reservation_page.dart';
 import 'package:ex_project/router/router_generate.dart';
 import 'package:ex_project/router/router_name.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      home: const OurRestaurantPage(),
+      home: const HappyDealReservationPage(),
       // initialRoute: RouterName.loginPage,
       // onGenerateRoute: RouteGenerator.generateRoute
     );

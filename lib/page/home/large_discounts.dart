@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../router/router_name.dart';
+import '../../router/router_name.dart';
+
 
 class LargeDiscounts extends StatefulWidget {
   const LargeDiscounts({super.key});

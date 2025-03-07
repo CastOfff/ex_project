@@ -1,13 +1,11 @@
 
-import 'package:ex_project/home/our_restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../onboard/onboard_page/slide_1.dart';
-import '../onboard/onboard_page/slide_2.dart';
-import '../onboard/onboard_page/slide_3.dart';
+import '../../restaurant_list.dart';
 import 'best_seller.dart';
 import 'flash_order_card.dart';
 import 'large_discounts.dart';
+import 'our_restaurant_card.dart';
 import 'title_home_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -119,7 +117,7 @@ class _HomePageState extends State<HomePage> {
               TitleHomeScreen(title: 'Our Restaurant',),
               Column(
                 spacing: 11,
-                children: List.generate(3, (index) => OurRestaurant(
+                children: List.generate(3, (index) => OurRestaurantCard(
                   name: restaurantList[index]['name'],
                   address: restaurantList[index]['address'],
                 )),

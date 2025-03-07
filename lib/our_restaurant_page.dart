@@ -1,8 +1,9 @@
 
+import 'package:ex_project/page/home/our_restaurant_card.dart';
+import 'package:ex_project/restaurant_list.dart';
 import 'package:flutter/material.dart';
 
 import 'color.dart';
-import 'home/our_restaurant.dart';
 
 class OurRestaurantPage extends StatefulWidget {
   const OurRestaurantPage({super.key});
@@ -46,16 +47,22 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('ALL'),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.keyboard_arrow_down_sharp)),
-                    ],
-                  ),
-                )
+                    child: DropdownButton(
+                      items: [
+                        DropdownMenuItem(
+                          child: Text('data'),
+                        ),
+                        DropdownMenuItem(
+                          child: Text('data'),
+                        )
+                      ],
+                      onChanged: (value) {},
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.black,
+                      ),
+                      hint: Text('data'),
+                    ))
               ],
             ),
             SizedBox(height: 20,),
@@ -65,7 +72,7 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: OurRestaurant(
+                      child: OurRestaurantCard(
                         name: restaurantList[index]['name'],
                         address: restaurantList[index]['address'],
                       ),
