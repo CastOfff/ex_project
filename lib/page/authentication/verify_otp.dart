@@ -1,9 +1,9 @@
 
-import 'package:ex_project/authentication/validator.dart';
+import 'package:ex_project/page/authentication/validator.dart';
 import 'package:flutter/material.dart';
-import '../router/router_name.dart';
-import 'common_text_field.dart';
-import 'login_button.dart';
+import '../../core/widget/common_text_field.dart';
+import '../../core/widget/verify_common_button.dart';
+import '../../router/router_name.dart';
 
 class VerifyOTP extends StatefulWidget {
   const VerifyOTP({super.key});
@@ -89,7 +89,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
             /// VERIFY
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: LoginButton(
+              child: VerifyCommonButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     Navigator.pushNamed(context, RouterName.newPassWordPage);

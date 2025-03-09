@@ -1,11 +1,11 @@
-import 'package:ex_project/authentication/validator.dart';
+import 'package:ex_project/page/authentication/validator.dart';
 import 'package:flutter/material.dart';
 
-import '../color.dart';
-import '../local_storage_learn/user.dart';
-import '../local_storage_learn/user_preferences.dart';
-import 'common_text_field.dart';
-import 'login_button.dart';
+import '../../core/constants/color.dart';
+import '../../core/widget/common_text_field.dart';
+import '../../local_storage/user.dart';
+import '../../local_storage/user_preferences.dart';
+import '../../core/widget/verify_common_button.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -114,7 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
             /// SIGN UP
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: LoginButton(
+              child: VerifyCommonButton(
                 onPressed: () async {
                   if (_formKey.currentState?.validate() ?? false) {
                     user1.name = _nameController.text;

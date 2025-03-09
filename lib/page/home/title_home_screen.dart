@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class TitleHomeScreen extends StatefulWidget {
   final String title;
-  const TitleHomeScreen({super.key, required this.title});
+  final Function()? onTap;
+  const TitleHomeScreen({super.key, required this.title, this.onTap});
 
   @override
   State<TitleHomeScreen> createState() => _TitleHomeScreenState();
@@ -24,9 +25,7 @@ class _TitleHomeScreenState extends State<TitleHomeScreen> {
           ),
         ),
         InkWell(
-          onTap: () {
-
-          },
+          onTap: widget.onTap,
           child: Row(
             children: [
               Text('See all', style: TextStyle(fontSize: 16, color: Colors.grey),),

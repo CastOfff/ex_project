@@ -1,9 +1,12 @@
 
-import 'package:ex_project/onboard/onboard_page/slide_1.dart';
-import 'package:ex_project/onboard/onboard_page/slide_2.dart';
-import 'package:ex_project/onboard/onboard_page/slide_3.dart';
+import 'package:ex_project/page/onboard/onboard_page/slide_1.dart';
+import 'package:ex_project/page/onboard/onboard_page/slide_2.dart';
+import 'package:ex_project/page/onboard/onboard_page/slide_3.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../router/router_name.dart';
+import '../splash/onboard_sevices.dart';
 
 class OnboardPage extends StatefulWidget {
   const OnboardPage({super.key});
@@ -58,8 +61,8 @@ class _OnboardPageState extends State<OnboardPage> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        // OnboardService.saveOnboardToLocal();
-                        // Navigator.pushReplacementNamed(context, RouteNamed.homePage);
+                        OnboardService.saveOnboardToLocal();
+                        Navigator.pushReplacementNamed(context, RouterName.homePage);
                       },
                       child: Text('Skip', style: TextStyle(fontSize: 20),),
                     ),
@@ -72,15 +75,15 @@ class _OnboardPageState extends State<OnboardPage> {
                         onDotClicked: (index) {}),
                     IconButton(
                         onPressed: () {
-                          // if (currentPage == 2) {
-                          //   OnboardService.saveOnboardToLocal();
-                          //   Navigator.pushReplacementNamed(
-                          //       context, RouteNamed.homePage);
-                          // } else {
+                          if (currentPage == 2) {
+                            OnboardService.saveOnboardToLocal();
+                            Navigator.pushReplacementNamed(
+                                context, RouterName.homePage);
+                          } else {
                             controller.nextPage(
                                 duration: const Duration(milliseconds: 500),
                                 curve: Curves.easeInOut);
-                          // }
+                          }
                         },
                         icon: Icon(Icons.arrow_forward_ios_rounded))
                   ],

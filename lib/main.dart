@@ -1,15 +1,10 @@
-import 'package:ex_project/color.dart';
-import 'package:ex_project/happy_deals.dart';
-import 'package:ex_project/large_discounts_page.dart';
-import 'package:ex_project/page/happy_deal_reservation/happy_deal_reservation_page.dart';
+import 'package:ex_project/core/constants/color.dart';
 import 'package:ex_project/router/router_generate.dart';
 import 'package:ex_project/router/router_name.dart';
 
 import 'package:flutter/material.dart';
-import 'local_storage_learn/user_preferences.dart';
-import 'nearby_restaurants_page.dart';
-import 'onboard/onboard_page/onboard_page.dart';
-import 'our_restaurant_page.dart';
+import 'local_storage/app_preferences.dart';
+import 'local_storage/user_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +14,7 @@ void main() async {
 
 initPref() async {
   UserPreferences userPreferences = UserPreferences();
+  await AppPreference.init();
   await userPreferences.onInit();
 }
 
@@ -30,9 +26,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      home: const HappyDealReservationPage(),
-      // initialRoute: RouterName.loginPage,
-      // onGenerateRoute: RouteGenerator.generateRoute
+      // home: OurRestaurantPage(),
+      initialRoute: RouterName.splashPage,
+      onGenerateRoute: RouteGenerator.generateRoute
     );
   }
 }

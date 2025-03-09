@@ -1,9 +1,11 @@
 
-import 'package:ex_project/page/home/our_restaurant_card.dart';
-import 'package:ex_project/restaurant_list.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'color.dart';
+import '../core/constants/color.dart';
+import '../core/widget/our_restaurant_card.dart';
+import '../restaurant_list.dart';
 
 class OurRestaurantPage extends StatefulWidget {
   const OurRestaurantPage({super.key});
@@ -40,29 +42,29 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
                     color: Color(0xFF2B0803),
                   ),
                 ),
-                Container(
-                  height: 25,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                          child: Text('data'),
-                        ),
-                        DropdownMenuItem(
-                          child: Text('data'),
-                        )
-                      ],
-                      onChanged: (value) {},
-                      icon: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.black,
-                      ),
-                      hint: Text('data'),
-                    ))
+                // Container(
+                //   height: 25,
+                //   width: 100,
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(10),
+                //   ),
+                //     child: DropdownButton(
+                //       items: [
+                //         DropdownMenuItem(
+                //           child: Text('data'),
+                //         ),
+                //         DropdownMenuItem(
+                //           child: Text('data'),
+                //         )
+                //       ],
+                //       onChanged: (value) {},
+                //       icon: Icon(
+                //         Icons.keyboard_arrow_down,
+                //         color: Colors.black,
+                //       ),
+                //       hint: Text('data'),
+                //     ))
               ],
             ),
             SizedBox(height: 20,),

@@ -1,16 +1,16 @@
 
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatefulWidget {
+class VerifyCommonButton extends StatefulWidget {
   final void Function() onPressed;
   final String title;
-  const LoginButton({super.key, required this.onPressed, required this.title});
+  const VerifyCommonButton({super.key, required this.onPressed, required this.title});
 
   @override
-  State<LoginButton> createState() => _LoginButtonState();
+  State<VerifyCommonButton> createState() => _VerifyCommonButtonState();
 }
 
-class _LoginButtonState extends State<LoginButton> {
+class _VerifyCommonButtonState extends State<VerifyCommonButton> {
 
   @override
   Widget build(BuildContext context) {

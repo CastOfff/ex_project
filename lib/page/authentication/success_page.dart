@@ -1,6 +1,6 @@
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
-import 'login_button.dart';
+import '../../core/widget/verify_common_button.dart';
 
 class SuccessPage extends StatefulWidget {
   const SuccessPage({super.key});
@@ -52,7 +52,7 @@ class _SuccessPageState extends State<SuccessPage> {
             /// LOGIN
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: LoginButton(
+              child: VerifyCommonButton(
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
                     context,

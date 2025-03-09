@@ -1,9 +1,9 @@
-import 'package:ex_project/authentication/validator.dart';
+import 'package:ex_project/page/authentication/validator.dart';
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
-import 'common_text_field.dart';
-import 'login_button.dart';
+import '../../core/widget/common_text_field.dart';
+import '../../core/widget/verify_common_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             /// SIGN UP
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: LoginButton(
+              child: VerifyCommonButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

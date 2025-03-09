@@ -24,6 +24,7 @@ class AnimatedScreen extends StatefulWidget {
 class _AnimatedScreenState extends State<AnimatedScreen>
     with SingleTickerProviderStateMixin {
   List<dynamic> users = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,7 @@
+import 'package:ex_project/core/widget/verify_common_button.dart';
 import 'package:flutter/material.dart';
 
-import 'authentication/login_button.dart';
+import '../router/router_name.dart';
 
 class LargeDiscountsPage extends StatefulWidget {
   const LargeDiscountsPage({super.key});
@@ -343,8 +344,10 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                       ),
                     ),
                     const SizedBox(height: 32,),
-                    LoginButton(
-                      onPressed: () {},
+                    VerifyCommonButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RouterName.happyDealReservationPage);
+                      },
                       title: 'GET IT NOW',
                     )
                   ],

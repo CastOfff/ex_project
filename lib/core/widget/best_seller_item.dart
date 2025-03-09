@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class BestSeller extends StatelessWidget {
-  const BestSeller({super.key});
+class BestSellerItem extends StatelessWidget {
+  const BestSellerItem({super.key});
 
   @override
   Widget build(BuildContext context) {

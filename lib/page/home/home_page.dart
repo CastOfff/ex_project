@@ -1,11 +1,12 @@
 
+import 'package:ex_project/core/widget/best_seller_item.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../core/widget/our_restaurant_card.dart';
 import '../../restaurant_list.dart';
-import 'best_seller.dart';
+import '../../router/router_name.dart';
 import 'flash_order_card.dart';
 import 'large_discounts.dart';
-import 'our_restaurant_card.dart';
 import 'title_home_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -100,7 +101,12 @@ class _HomePageState extends State<HomePage> {
                   // WormEffect(activeDotColor: Color(0xffAD3F32)),
                   onDotClicked: (index) {}
               ),
-              TitleHomeScreen(title: 'Best Seller'),
+              TitleHomeScreen(
+                  title: 'Best Seller',
+                  onTap: () {
+                    Navigator.pushNamed(context, RouterName.productBestSellerPage);
+                  }
+              ),
               SizedBox(
                 height: 222,
                 child: ListView.builder(
@@ -109,12 +115,17 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: BestSeller(),
+                        child: BestSellerItem(),
                       );
                     },
                 ),
               ),
-              TitleHomeScreen(title: 'Our Restaurant',),
+              TitleHomeScreen(
+                title: 'Our Restaurant',
+                onTap: () {
+                  Navigator.pushNamed(context, RouterName.ourRestaurantPage);
+                },
+              ),
               Column(
                 spacing: 11,
                 children: List.generate(3, (index) => OurRestaurantCard(
@@ -122,7 +133,12 @@ class _HomePageState extends State<HomePage> {
                   address: restaurantList[index]['address'],
                 )),
               ),
-              TitleHomeScreen(title: 'Happy deal',),
+              TitleHomeScreen(
+                title: 'Happy deal',
+                onTap: () {
+                  Navigator.pushNamed(context, RouterName.happyDeals);
+                },
+              ),
               SizedBox(
                 height: 118,
                 child: ListView.builder(

@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 
-import 'package:ex_project/color.dart';
+import 'package:ex_project/core/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class FlashOrderCard extends StatelessWidget {

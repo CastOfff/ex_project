@@ -1,7 +1,7 @@
+import 'package:ex_project/core/widget/verify_common_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../authentication/common_text_field.dart';
-import '../../authentication/login_button.dart';
+import '../../core/widget/common_text_field.dart';
 import '../../date_time.dart';
 import '../../restaurant_list.dart';
 import 'date_reservation_picked.dart';
@@ -490,7 +490,7 @@ class _HappyDealReservationPageState extends State<HappyDealReservationPage> {
                             ),
                           ],
                         ),
-                        LoginButton(
+                        VerifyCommonButton(
                           onPressed: () {
                           },
                           title: 'RESERVE',

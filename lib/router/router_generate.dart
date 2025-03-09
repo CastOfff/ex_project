@@ -1,15 +1,20 @@
-
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
-import '../authentication/get_otp.dart';
-import '../authentication/verify_otp.dart';
-import '../authentication/new_pass_word_page.dart';
-import '../authentication/success_page.dart';
-import '../authentication/login_page.dart';
-import '../authentication/sign_up_page.dart';
-import '../happy_deals.dart';
-import '../large_discounts_page.dart';
+import '../page/authentication/get_otp.dart';
+import '../page/authentication/login_page.dart';
+import '../page/authentication/new_pass_word_page.dart';
+import '../page/authentication/sign_up_page.dart';
+import '../page/authentication/success_page.dart';
+import '../page/authentication/verify_otp.dart';
+import '../page/happy_deal_reservation/happy_deal_reservation_page.dart';
+import '../page/home/home_page.dart';
+import '../page/onboard/onboard_page/onboard_page.dart';
+import '../page/onboard/splash/splash_page.dart';
+import '../page/our_restaurant_page.dart';
+import '../page/product/product_best_seller_page.dart';
+import '../page/happy_deals.dart';
+import '../page/large_discounts_page.dart';
 import 'animation_router_page.dart';
 
 class RouteGenerator {
@@ -38,6 +43,24 @@ class RouteGenerator {
 
       case RouterName.largeDiscountsPage:
         return animationRouterPage(page: const LargeDiscountsPage());
+
+      case RouterName.ourRestaurantPage:
+        return animationRouterPage(page: const OurRestaurantPage());
+
+      case RouterName.happyDealReservationPage:
+        return animationRouterPage(page: const HappyDealReservationPage());
+
+      case RouterName.productBestSellerPage:
+        return animationRouterPage(page: const ProductBestSellerPage());
+
+      case RouterName.homePage:
+        return animationRouterPage(page: const HomePage());
+
+      case RouterName.splashPage:
+        return animationRouterPage(page: const SplashPage());
+
+      case RouterName.onboardPage:
+        return animationRouterPage(page: const OnboardPage());
     }
     return null;
   }

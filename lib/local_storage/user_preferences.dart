@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ex_project/local_storage_learn/user.dart';
+import 'package:ex_project/local_storage/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
