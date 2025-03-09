@@ -7,17 +7,13 @@ class DateReservationPicked extends StatefulWidget {
   final DateTime today;
   final DateTime daysInMonth;
   final Color backgroundColor ;
-  final Color borderColor;
   final Color textColor;
-  final double borderWidth;
   const DateReservationPicked({
     super.key,
     required this.today,
     required this.daysInMonth,
     required this.backgroundColor,
-    required this.borderColor,
     required this.textColor,
-    required this.borderWidth,
   });
 
   @override
@@ -32,10 +28,6 @@ class _DateReservationPickedState extends State<DateReservationPicked> {
       height: 90,
       //padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
       decoration: BoxDecoration(
-        border: Border.all(
-          width: widget.borderWidth,
-          color: widget.borderColor
-        ),
         borderRadius: BorderRadius.circular(50),
         color: widget.backgroundColor,
       ),
@@ -51,7 +43,7 @@ class _DateReservationPickedState extends State<DateReservationPicked> {
             ),
           ),
           Text(
-              '${weekdays[widget.daysInMonth.weekday - 1]}',
+              weekdays[widget.daysInMonth.weekday - 1],
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
