@@ -27,7 +27,8 @@ class _ProductBestSellerPageState extends State<ProductBestSellerPage> {
         actions: [
           IconButton(
               onPressed: () {
-                
+                Product product = Product(name: 'Ok cuong', description: 'test', image: 'https://loremflickr.com/640/480/food');
+                productService.createProduct(product);
               },
               icon: const Icon(Icons.add, color: Colors.black,)
           )
