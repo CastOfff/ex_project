@@ -24,6 +24,14 @@ class _ProductBestSellerPageState extends State<ProductBestSellerPage> {
             },
             icon: const Icon(Icons.arrow_back_outlined, color: Colors.black,)
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                
+              },
+              icon: const Icon(Icons.add, color: Colors.black,)
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
