@@ -51,9 +51,6 @@ class _AnimatedScreenState extends State<AnimatedScreen>
             return Card(
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(user['avatar']),
-                ),
                 title: Text(user['name'], style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user['email']),
               ),

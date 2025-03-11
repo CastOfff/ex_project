@@ -5,7 +5,7 @@ class Product {
   final String? image;
   final String? description;
   final String? reviewCount;
-
+  final String? price;
   Product({
     this.id,
     this.createdAt,
@@ -13,6 +13,7 @@ class Product {
     this.image,
     this.description,
     this.reviewCount,
+    this.price,
 });
 
   static Product fromJson(Map<String, dynamic> json) {
@@ -23,6 +24,7 @@ class Product {
       image: json['image'],
       description: json['description'],
       reviewCount: json['reviewCount'],
+      price: json['price'],
     );
   }
 
@@ -34,6 +36,7 @@ class Product {
       'image': image,
       'description': description,
       'reviewCount': reviewCount,
+      'price': price,
     };
   }
 }

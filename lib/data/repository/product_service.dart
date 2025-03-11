@@ -35,4 +35,13 @@ class ProductService {
     return Product.fromJson(data);
   }
 
+  Future<Product> updateProduct(String id, Product product) async {
+    final response = await http.put(
+      Uri.https(domain, 'product/$id'),
+      headers: header,
+      body: jsonEncode(product.toJson()),
+    );
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+    return Product.fromJson(data);
+  }
 }

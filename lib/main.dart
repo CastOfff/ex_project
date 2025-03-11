@@ -1,4 +1,5 @@
 import 'package:ex_project/core/constants/color.dart';
+import 'package:ex_project/page/reservation/reservation_page.dart';
 import 'package:ex_project/router/router_generate.dart';
 import 'package:ex_project/router/router_name.dart';
 
@@ -26,9 +27,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      // home: OurRestaurantPage(),
-      initialRoute: RouterName.splashPage,
-      onGenerateRoute: RouteGenerator.generateRoute
+      home: const ReservationPage(),
+      // initialRoute: RouterName.splashPage,
+      // onGenerateRoute: RouteGenerator.generateRoute
     );
   }
 }

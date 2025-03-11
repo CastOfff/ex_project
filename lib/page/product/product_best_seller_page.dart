@@ -1,4 +1,4 @@
-import 'package:ex_project/page/product/product_best_seller.dart';
+import 'package:ex_project/page/product/product_best_seller_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/model/product.dart';
@@ -27,10 +27,32 @@ class _ProductBestSellerPageState extends State<ProductBestSellerPage> {
         actions: [
           IconButton(
               onPressed: () {
-                Product product = Product(name: 'Ok cuong', description: 'test', image: 'https://loremflickr.com/640/480/food');
+                Product product = Product(
+                    createdAt: DateTime.now(),
+                    reviewCount: 'ahfohsa',
+                    name: 'Ok cuong',
+                    description: 'test',
+                    image: 'https://loremflickr.com/640/480/food');
                 productService.createProduct(product);
               },
               icon: const Icon(Icons.add, color: Colors.black,)
+          ),
+          IconButton(
+              onPressed: () {
+                productService.updateProduct(
+                    '22',
+                    Product(
+                        createdAt: DateTime.now(),
+                        reviewCount: 'ahfohsa',
+                        name: 'manh cuong',
+                        description: 'test',
+                        image: 'https://loremflickr.com/640/480/food'));
+                setState(() {});
+              },
+              icon: Icon(
+                Icons.refresh,
+                color: Colors.black,
+              )
           )
         ],
       ),
