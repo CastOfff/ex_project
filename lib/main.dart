@@ -1,7 +1,5 @@
 import 'package:ex_project/core/constants/color.dart';
 import 'package:ex_project/page/reservation/reservation_page.dart';
-import 'package:ex_project/router/router_generate.dart';
-import 'package:ex_project/router/router_name.dart';
 
 import 'package:flutter/material.dart';
 import 'local_storage/app_preferences.dart';

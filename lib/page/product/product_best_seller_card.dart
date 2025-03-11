@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../data/model/product.dart';
-import '../../data/repository/product_service.dart';
 
 class ProductBestSeller extends StatefulWidget {
   final Product product;
@@ -20,7 +19,7 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
       child: Container(
         width: double.infinity,
         height: 120,
-        padding: EdgeInsets.only(left: 13, right: 13),
+        padding: const EdgeInsets.only(left: 13, right: 13),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white

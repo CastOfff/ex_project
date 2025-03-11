@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../core/widget/common_text_field.dart';
 import '../../core/widget/verify_common_button.dart';
 import '../../date_time.dart';
-import '../../restaurant_list.dart';
 import '../happy_deal_reservation/date_reservation_picked.dart';
 
 class ReservationTab extends StatefulWidget {
