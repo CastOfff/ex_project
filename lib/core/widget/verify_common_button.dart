@@ -4,7 +4,18 @@ import 'package:flutter/material.dart';
 class VerifyCommonButton extends StatefulWidget {
   final void Function() onPressed;
   final String title;
-  const VerifyCommonButton({super.key, required this.onPressed, required this.title});
+  final double width;
+  final double height;
+  final TextStyle? style;
+  final EdgeInsets? padding;
+  const VerifyCommonButton(
+      {super.key,
+      required this.onPressed,
+      required this.title,
+      this.width = 500,
+      this.height = 44,
+      this.style,
+        this.padding});
 
   @override
   State<VerifyCommonButton> createState() => _VerifyCommonButtonState();
@@ -22,11 +33,11 @@ class _VerifyCommonButtonState extends State<VerifyCommonButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          minimumSize: const Size(500, 44),
+          minimumSize: Size(widget.width, widget.height),
           maximumSize: const Size(double.infinity, 50),
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+          padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
         ),
-        child: Text(widget.title, style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 20),)
+        child: Text(widget.title, style: widget.style ??const  TextStyle(fontWeight: FontWeight.w900, fontSize: 20),)
     );
   }
 }

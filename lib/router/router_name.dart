@@ -2,7 +2,7 @@
 class RouterName {
   /// Authentication
   static const loginPage = '/login';
-  static const signUpPage = '/authentication';
+  static const signUpPage = '/sign_up';
   static const getOTP = '/get_otp';
   static const verifyOTP = '/verify_otp';
   static const newPassWordPage = '/new_pass_word_page';
@@ -25,4 +25,8 @@ class RouterName {
   static const productBestSellerPage = '/product_best_seller_page';
 
   static const happyDeals = '/happy_deals';
+
+  static const reservationPage = '/reservation_page';
+
+  static const editProfilePage = '/edit_profile_page';
 }

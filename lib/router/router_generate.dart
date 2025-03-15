@@ -7,6 +7,7 @@ import '../page/authentication/new_pass_word_page.dart';
 import '../page/authentication/sign_up_page.dart';
 import '../page/authentication/success_page.dart';
 import '../page/authentication/verify_otp.dart';
+import '../page/edit_profile/edit_profile_page.dart';
 import '../page/happy_deal_reservation/happy_deal_reservation_page.dart';
 import '../page/home/home_page.dart';
 import '../page/onboard/onboard_page/onboard_page.dart';
@@ -61,7 +62,15 @@ class RouteGenerator {
 
       case RouterName.onboardPage:
         return animationRouterPage(page: const OnboardPage());
+
+      case RouterName.nearbyRestaurantsPage:
+        return animationRouterPage(page: const OurRestaurantPage());
+
+      case RouterName.editProfilePage:
+        return animationRouterPage(page: const EditProfilePage());
+
+      default:
+        return null;
     }
-    return null;
   }
 }

@@ -1,13 +1,14 @@
 
 import 'package:ex_project/core/widget/best_seller_item.dart';
+import 'package:ex_project/page/home/component/drawer/drawer_home.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../core/widget/our_restaurant_card.dart';
 import '../../restaurant_list.dart';
 import '../../router/router_name.dart';
-import 'flash_order_card.dart';
-import 'large_discounts.dart';
-import 'title_home_screen.dart';
+import 'component/card/flash_order_card.dart';
+import 'component/card/large_discounts.dart';
+import 'component/card/title_home_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFFF6EFE8),
       appBar: AppBar(
         backgroundColor: const Color(0xFFF6EFE8),
-        leading: Icon(Icons.menu, size: 32,),
+        // leading: Icon(Icons.menu, size: 32,),
         titleTextStyle: TextStyle(fontSize: 18, color: Colors.black),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: 20,),
         ],
       ),
+      drawer: const DrawerHome(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),

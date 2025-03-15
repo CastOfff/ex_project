@@ -1,8 +1,8 @@
-import 'package:ex_project/page/reservation/reservation_tab.dart';
-import 'package:ex_project/page/reservation/review_tab.dart';
+import 'package:ex_project/page/reservation/component/reservation_tab.dart';
+import 'package:ex_project/page/reservation/component/review_tab.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/color.dart';
-import 'menu_tab.dart';
+import 'component/menu_tab.dart';
 
 class ReservationPage extends StatefulWidget {
   const ReservationPage({super.key});

@@ -1,5 +1,9 @@
 import 'package:ex_project/core/constants/color.dart';
+import 'package:ex_project/page/edit_profile/edit_profile_page.dart';
+import 'package:ex_project/page/home/home_page.dart';
 import 'package:ex_project/page/reservation/reservation_page.dart';
+import 'package:ex_project/router/router_generate.dart';
+import 'package:ex_project/router/router_name.dart';
 
 import 'package:flutter/material.dart';
 import 'local_storage/app_preferences.dart';
@@ -25,9 +29,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      home: const ReservationPage(),
-      // initialRoute: RouterName.splashPage,
-      // onGenerateRoute: RouteGenerator.generateRoute
+      // home: const HomePage(),
+      initialRoute: RouterName.splashPage,
+      onGenerateRoute: RouteGenerator.generateRoute
     );
   }
 }

@@ -1,9 +1,9 @@
 
-import 'package:ex_project/page/reservation/menu_product_card.dart';
+import 'package:ex_project/page/reservation/component/menu_product_card.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/model/product.dart';
-import '../../data/repository/product_service.dart';
+import '../../../data/model/product.dart';
+import '../../../data/repository/product_service.dart';
 
 class MenuTab extends StatelessWidget {
   const MenuTab({super.key});

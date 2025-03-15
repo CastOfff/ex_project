@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/model/product.dart';
+import '../../../data/model/product.dart';
 
 class MenuProductCard extends StatefulWidget {
   final Product product;
