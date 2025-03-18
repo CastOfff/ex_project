@@ -1,3 +1,4 @@
+import 'package:ex_project/page/reservation/reservation_page.dart';
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,9 @@ class RouteGenerator {
 
       case RouterName.editProfilePage:
         return animationRouterPage(page: const EditProfilePage());
+
+      case RouterName.reservationPage:
+        return animationRouterPage(page: const ReservationPage());
 
       default:
         return null;

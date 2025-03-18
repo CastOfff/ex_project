@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/model/product.dart';
+import '../../router/router_name.dart';
 
 class ProductBestSeller extends StatefulWidget {
   final Product product;
@@ -42,7 +43,7 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                 ),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,16 +56,16 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                       children: [
                         Text(
                           widget.product.name!,
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                         Text(widget.product.description!,
-                            style: TextStyle(fontSize: 10),
+                            style: const TextStyle(fontSize: 10),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis),
                       ],
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -72,9 +73,9 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                         children: [
                           Text(
                             widget.product.reviewCount!,
-                            style: TextStyle(fontSize: 14),
+                            style: const TextStyle(fontSize: 14),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Colors.yellow,
                             size: 14,
@@ -83,7 +84,7 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                       ),
                       ElevatedButton(
                           onPressed: () {
-
+                            Navigator.pushNamed(context, RouterName.reservationPage);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFAD3F32),
@@ -93,7 +94,7 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                             ),
                             minimumSize: const Size(91, 26),
                           ),
-                          child: Text('Reserve', style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),)
+                          child: const Text('Reserve', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),)
                       )
                     ],
                   )

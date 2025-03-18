@@ -68,7 +68,7 @@ class _MenuProductCardState extends State<MenuProductCard> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      '${widget.product.price!}0 VND',
+                      '${widget.product.price}0 VND',
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   )
