@@ -6,8 +6,9 @@ import 'package:ex_project/router/router_generate.dart';
 import 'package:ex_project/router/router_name.dart';
 
 import 'package:flutter/material.dart';
-import 'local_storage/app_preferences.dart';
-import 'local_storage/user_preferences.dart';
+
+import 'data/local_storage/app_preferences.dart';
+import 'data/local_storage/user_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ initPref() async {
   UserPreferences userPreferences = UserPreferences();
   await AppPreference.init();
   await userPreferences.onInit();
+  bool isLoggedIn = await userPreferences.getLoginStatus();
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: backgroundColor),
       debugShowCheckedModeBanner: false,
-      // home: const HomePage(),
+      // home: const EditProfilePage(),
       initialRoute: RouterName.splashPage,
       onGenerateRoute: RouteGenerator.generateRoute
     );

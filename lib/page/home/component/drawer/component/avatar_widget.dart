@@ -1,13 +1,13 @@
 
 import 'package:flutter/material.dart';
-
-import '../../../../../core/constants/color.dart';
 import '../../../../../core/widget/verify_common_button.dart';
+import '../../../../../data/local_storage/user_preferences.dart';
 
 class AvatarWidget extends StatefulWidget {
   final String titleButton;
+  final String name;
   final void Function() onPressed;
-  const AvatarWidget({super.key, required this.titleButton, required this.onPressed});
+  const AvatarWidget({super.key, required this.titleButton, required this.name, required this.onPressed});
 
   @override
   State<AvatarWidget> createState() => _AvatarWidgetState();
@@ -27,9 +27,9 @@ class _AvatarWidgetState extends State<AvatarWidget> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Khanh Nguyen',
-              style: TextStyle(
+            Text(
+              widget.name,
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 26,
                 fontWeight: FontWeight.w600,

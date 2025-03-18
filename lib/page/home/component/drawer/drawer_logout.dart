@@ -1,9 +1,10 @@
 
+import 'package:ex_project/core/constants/color.dart';
+import 'package:ex_project/page/home/component/drawer/component/avatar_widget.dart';
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/color.dart';
 import 'component/action_button.dart';
-import 'component/avatar_widget.dart';
 import 'component/info.dart';
 
 class DrawerLogout extends StatefulWidget {
@@ -22,26 +23,27 @@ class _DrawerLogoutState extends State<DrawerLogout> {
         const SizedBox(height: 20,),
         Center(child: Image.asset('assets/images/logo.png')),
         AvatarWidget(
-          titleButton: 'Edit profile',
+          titleButton: 'Sign up',
+          name: 'Guest',
           onPressed: () {
-            Navigator.pushNamed(context, '/edit_profile_page');
+            Navigator.pushNamed(context, '/sign_up');
           },
         ),
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Container(
             decoration: const BoxDecoration(
-                color: primaryColor,
-                border: Border.symmetric(
-                  horizontal: BorderSide(
-                    color: primaryColor,
-                    width: 0.5,
-                  ),
-                  vertical: BorderSide(
-                    color: primaryColor,
-                    width: 1,
-                  ),
-                )
+              color: primaryColor,
+              border: Border.symmetric(
+                horizontal: BorderSide(
+                  color: primaryColor,
+                  width: 0.5,
+                ),
+                vertical: BorderSide(
+                  color: primaryColor,
+                  width: 1,
+                ),
+              )
             ),
             child: Column(
               children: [
@@ -60,26 +62,21 @@ class _DrawerLogoutState extends State<DrawerLogout> {
                 ActionButton(
                   onPressed: () {
                   },
-                  title: 'Change password',
-                  icon: const Icon(Icons.key_outlined,size: 22, color: primaryColor,),
-                ),
-                ActionButton(
-                  onPressed: () {
-                  },
                   title: 'About us',
                   icon: const Icon(Icons.info_outline,size: 22, color: primaryColor,),
                 ),
                 ActionButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, RouterName.loginPage);
                   },
-                  title: 'Log out',
+                  title: 'Log in',
                   icon: const Icon(Icons.login_outlined,size: 22, color: primaryColor,),
                 ),
               ],
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Info(),

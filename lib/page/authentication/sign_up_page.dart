@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants/color.dart';
 import '../../core/widget/common_text_field.dart';
-import '../../local_storage/user.dart';
-import '../../local_storage/user_preferences.dart';
 import '../../core/widget/verify_common_button.dart';
+import '../../data/local_storage/user_preferences.dart';
+import '../../data/model/user.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,7 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _userPreferences = UserPreferences();
-  late User user1 = User();
+  late User user1;
   final _formKey = GlobalKey<FormState>();
   bool obscureTextPassword = true;
   bool obscureTextConfirmPassword = true;

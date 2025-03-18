@@ -2,8 +2,12 @@
 import 'package:ex_project/core/widget/best_seller_item.dart';
 import 'package:ex_project/page/home/component/drawer/drawer_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../bloc/login bloc/login_bloc.dart';
 import '../../core/widget/our_restaurant_card.dart';
+import '../../data/local_storage/user_preferences.dart';
+import '../../data/repository/user_service.dart';
 import '../../restaurant_list.dart';
 import '../../router/router_name.dart';
 import 'component/card/flash_order_card.dart';
@@ -34,8 +38,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: const Color(0xFFF6EFE8),
         // leading: Icon(Icons.menu, size: 32,),
-        titleTextStyle: TextStyle(fontSize: 18, color: Colors.black),
-        title: Row(
+        titleTextStyle: const TextStyle(fontSize: 18, color: Colors.black),
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.location_on, fill: 0, color: Colors.black87,),
@@ -44,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         centerTitle: true,
-        actions: [
+        actions: const [
           CircleAvatar(
               backgroundColor: Colors.white,
               maxRadius: 20,
@@ -53,7 +57,13 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: 20,),
         ],
       ),
-      drawer: const DrawerHome(),
+      drawer: BlocProvider<LoginBloc>(
+          create: (context) => LoginBloc(
+            userService: UserService(),
+            userPreferences: UserPreferences(),
+          ),
+        child: const DrawerHome(),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
@@ -115,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                   itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: BestSellerItem(),
                       );
                     },
@@ -147,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: LargeDiscounts(),
                       );
                     },

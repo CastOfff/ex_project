@@ -1,19 +1,38 @@
 
 import 'package:flutter/material.dart';
 
+import '../../data/local_storage/user_preferences.dart';
+import '../../data/model/user.dart';
+import '../../data/repository/user_service.dart';
 import 'edit_field.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
   @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  @override
   Widget build(BuildContext context) {
+    final UserService userService = UserService();
+    final userPreferences = UserPreferences();
     TextEditingController editName = TextEditingController();
-    editName.text = 'Khanh Nguyen';
     TextEditingController editSdt = TextEditingController();
-    editSdt.text = '0987654321';
     TextEditingController editEmail = TextEditingController();
-    editEmail.text = 'lamanhcuong.hus@gmail.com';
+    editName.text = userPreferences.getUser().name ?? '';
+    editSdt.text = userPreferences.getUser().phone ?? '';
+    editEmail.text = userPreferences.getUser().email ?? '';
+
+    Future<void> updateUser() async {
+      User user = userPreferences.getUser();
+      user.name = editName.text;
+      user.phone = editSdt.text;
+      user.email = editEmail.text;
+      await userService.updateUser(user);
+      await userPreferences.saveUser(user);
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Profile'),
@@ -25,8 +44,18 @@ class EditProfilePage extends StatelessWidget {
                 onPressed: () {
                    Navigator.pop(context);
                 },
-                icon: Icon(Icons.keyboard_backspace)),
-        actions: [Text('Done')],
+                icon: const Icon(Icons.keyboard_backspace)),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              await updateUser();
+              Navigator.pop(context);
+            },
+            child: const Text(
+              'Done',
+            )
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

@@ -16,9 +16,9 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer.periodic(
+    Future.delayed(
       Duration(seconds: 3),
-          (timer) {
+          () {
         final isFirstOpen = OnboardService.isFirstOpen();
         if (isFirstOpen) {
           Navigator.pushReplacementNamed(context, RouterName.onboardPage);
