@@ -1,9 +1,9 @@
 import 'package:ex_project/core/constants/color.dart';
-import 'package:ex_project/page/reservation/reservation_success_sheet.dart';
+import 'package:ex_project/page/reservation/component/sheet/reservation_success_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/widget/verify_common_button.dart';
-import '../../data/model/user.dart';
+import '../../../../core/widget/verify_common_button.dart';
+import '../../../../data/model/user.dart';
 
 class ConfirmReservationSheet extends StatefulWidget {
   final String fullName;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'large_discounts_page.dart';
+import 'reservation/large_discounts_page.dart';
 import '../router/router_name.dart';
 
 class HappyDeals extends StatefulWidget {

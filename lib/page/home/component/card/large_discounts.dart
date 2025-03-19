@@ -30,9 +30,9 @@ class _LargeDiscountsState extends State<LargeDiscounts> {
         ),
         child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: const Align(
+            const Padding(
+              padding: EdgeInsets.only(bottom: 8.0),
+              child: Align(
                 alignment: Alignment.bottomRight,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),

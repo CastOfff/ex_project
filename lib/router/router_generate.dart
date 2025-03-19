@@ -16,7 +16,7 @@ import '../page/onboard/splash/splash_page.dart';
 import '../page/our_restaurant_page.dart';
 import '../page/product/product_best_seller_page.dart';
 import '../page/happy_deals.dart';
-import '../page/large_discounts_page.dart';
+import '../page/reservation/large_discounts_page.dart';
 import 'animation_router_page.dart';
 
 class RouteGenerator {

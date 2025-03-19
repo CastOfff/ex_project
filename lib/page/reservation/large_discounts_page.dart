@@ -1,7 +1,7 @@
 import 'package:ex_project/core/widget/verify_common_button.dart';
 import 'package:flutter/material.dart';
 
-import '../router/router_name.dart';
+import '../../router/router_name.dart';
 
 class LargeDiscountsPage extends StatefulWidget {
   const LargeDiscountsPage({super.key});

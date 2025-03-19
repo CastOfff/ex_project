@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../core/widget/verify_common_button.dart';
+import '../../../../core/widget/verify_common_button.dart';
 
 class ReservationSuccessSheet extends StatefulWidget {
   const ReservationSuccessSheet({super.key});
