@@ -19,23 +19,23 @@ class DrawerHome extends StatelessWidget {
     final drawerWidth = screenWidth * 5 / 6;
     return Drawer(
       width: drawerWidth,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: BlocConsumer<LoginBloc, LoginState>(
+      child: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
 
             },
             builder: (context, state) {
               if (state is LoginSuccess) {
-                return DrawerLogin(
-                  user: state.user,
+                return SizedBox(
+                  width: drawerWidth,
+                  child: DrawerLogin(
+                    user: state.user,
+                  ),
                 );
               } else {
                 return const DrawerLogout();
               }
             }
           ),
-      ),
     );
   }
 }

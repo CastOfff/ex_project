@@ -2,8 +2,8 @@ import 'package:ex_project/core/widget/verify_common_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/widget/common_text_field.dart';
+import '../../data/local_storage/restaurant_list.dart';
 import '../../date_time.dart';
-import '../../restaurant_list.dart';
 import 'date_reservation_picked.dart';
 
 class HappyDealReservationPage extends StatefulWidget {

@@ -1,14 +1,16 @@
 
-import 'package:ex_project/core/widget/best_seller_item.dart';
+import 'package:ex_project/page/home/component/card/best_seller_item.dart';
 import 'package:ex_project/page/home/component/drawer/drawer_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../bloc/login bloc/login_bloc.dart';
 import '../../core/widget/our_restaurant_card.dart';
+import '../../data/local_storage/restaurant_list.dart';
 import '../../data/local_storage/user_preferences.dart';
+import '../../data/model/product.dart';
+import '../../data/repository/product_service.dart';
 import '../../data/repository/user_service.dart';
-import '../../restaurant_list.dart';
 import '../../router/router_name.dart';
 import 'component/card/flash_order_card.dart';
 import 'component/card/large_discounts.dart';
@@ -24,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late final PageController controller;
   int currentPage = 0;
-
+  final productService = ProductService();
   @override
   void initState() {
     controller = PageController();
@@ -44,7 +46,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(Icons.location_on, fill: 0, color: Colors.black87,),
             SizedBox(width: 10,),
-            Text('Dong Khoi St, District 1')
+            Text(
+              'Dong Khoi St, District 1',
+            )
           ],
         ),
         centerTitle: true,
@@ -66,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
           child: Column(
             spacing: 6,
             children: [
@@ -121,15 +125,24 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(
                 height: 222,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                  itemBuilder: (context, index) {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: BestSellerItem(),
-                      );
-                    },
+                child: FutureBuilder<List<Product>>(
+                  future: productService.getProductsFormSever(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const SizedBox.shrink();
+                    }
+                    final products = snapshot.data!;
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: BestSellerItem(product: products[index])
+                          );
+                      },
+                    );
+                  },
                 ),
               ),
               TitleHomeScreen(

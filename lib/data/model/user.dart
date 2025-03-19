@@ -5,7 +5,6 @@ class User {
   String? phone;
   String? email;
   String? password;
-  String? confirmPassword;
   User(
       {this.password,
         this.phone,
@@ -13,7 +12,6 @@ class User {
         this.id,
         this.name,
         this.avatarPath,
-        this.confirmPassword,
       });
 
   Map<String, dynamic> toJson() => {
@@ -23,7 +21,6 @@ class User {
     'phone': phone,
     'email': email,
     'password': password,
-    'confirmPassword': confirmPassword
   };
 
   static User fromJson(Map<String, dynamic> json) {
@@ -34,7 +31,6 @@ class User {
       phone: json['phone'],
       email: json['email'],
       password: json['password'],
-      confirmPassword: json['confirmPassword'],
     );
   }
 

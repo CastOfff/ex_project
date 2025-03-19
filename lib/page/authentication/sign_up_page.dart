@@ -1,4 +1,6 @@
+import 'package:ex_project/data/repository/user_service.dart';
 import 'package:ex_project/page/authentication/validator.dart';
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/color.dart';
@@ -33,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
     _phoneController.text = user1.phone ?? '';
     _emailController.text = user1.email ?? '';
     _passwordController.text = user1.password ?? '';
-    _confirmPasswordController.text = user1.confirmPassword ?? '';
+    _confirmPasswordController.text = user1.password ?? '';
     super.initState();
   }
 
@@ -121,14 +123,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     user1.phone = _phoneController.text;
                     user1.email = _emailController.text;
                     user1.password = _passwordController.text;
-                    user1.confirmPassword = _confirmPasswordController.text;
-                    String phoneNumber = _phoneController.text;
-                    Navigator.pop(context, phoneNumber);
+                    Navigator.pushReplacementNamed(context, RouterName.loginPage);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           'Form is valid, ${_formKey.currentState?.validate()}'),
                     ));
                     await _userPreferences.saveUser(user1);
+                    await UserService().createUser(user1);
                   }
                 },
                 title: 'Sign up',

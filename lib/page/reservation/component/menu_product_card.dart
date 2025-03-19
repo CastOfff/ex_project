@@ -56,6 +56,7 @@ class _MenuProductCardState extends State<MenuProductCard> {
                         Text(
                           widget.product.name!,
                           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                            overflow: TextOverflow.ellipsis
                         ),
                         Text(widget.product.description!,
                             style: const TextStyle(fontSize: 10),

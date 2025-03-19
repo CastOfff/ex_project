@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../../core/widget/common_text_field.dart';
 import '../../../core/widget/verify_common_button.dart';
+import '../../../data/local_storage/user_preferences.dart';
+import '../../../data/model/user.dart';
 import '../../../date_time.dart';
 import '../../happy_deal_reservation/date_reservation_picked.dart';
+import '../confirm_reservation_sheet.dart';
 
 class ReservationTab extends StatefulWidget {
   const ReservationTab({super.key});
@@ -14,6 +17,7 @@ class ReservationTab extends StatefulWidget {
 }
 
 class _ReservationTabState extends State<ReservationTab> {
+  final User user = UserPreferences().getUser();
   DateTime today = DateTime.now();
   late DateTime selectedDate;
   late DateTime selectedMonth;
@@ -23,8 +27,10 @@ class _ReservationTabState extends State<ReservationTab> {
   bool vaccine = false;
   bool agree = false;
   final TextEditingController _controller = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
-
   // Hàm lấy danh sách ngày
   List<DateTime> getDaysInMonth(int year, int month) {
     DateTime today = DateTime.now();
@@ -409,7 +415,7 @@ class _ReservationTabState extends State<ReservationTab> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 22.0),
                 child: CommonTextField(
-                  controller: TextEditingController(),
+                  controller: _fullNameController,
                   focusNode: FocusNode(),
                   hintText: 'Full name',
                   keyboardType: TextInputType.name,
@@ -421,7 +427,7 @@ class _ReservationTabState extends State<ReservationTab> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 22.0),
                 child: CommonTextField(
-                  controller: TextEditingController(),
+                  controller: _phoneController,
                   focusNode: FocusNode(),
                   hintText: 'Phone number',
                   keyboardType: TextInputType.phone,
@@ -433,7 +439,7 @@ class _ReservationTabState extends State<ReservationTab> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 22.0),
                 child: CommonTextField(
-                  controller: TextEditingController(),
+                  controller: _emailController,
                   focusNode: FocusNode(),
                   hintText: 'Email',
                   keyboardType: TextInputType.emailAddress,
@@ -464,8 +470,45 @@ class _ReservationTabState extends State<ReservationTab> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 22.0),
                 child: VerifyCommonButton(
-                  onPressed: () {},
                   title: 'RESERVE',
+                  onPressed: () {
+                    if (agree && _selectedTime != null && vaccine) {
+                      showBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmReservationSheet(
+                              description: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
+                              address: 'An BBQ Dong Khoi',
+                              time: _selectedTime ?? '',
+                              date: '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                              people: people,
+                              note: _controller.text == '' ? 'Window Seats' :_controller.text ,
+                              fullName: _fullNameController.text == '' ? '${user.name}' : _fullNameController.text,
+                              phone: _phoneController.text == '' ? '${user.phone}' : _phoneController.text,
+                              email: _emailController.text == '' ? '${user.email}' : _emailController.text,
+                            );
+                          },
+                      );
+                    } else if(!agree) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please agree with terms of service'),
+                        ),
+                      );
+                    } else if(_selectedTime == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please select a time'),
+                        ),
+                      );
+                    } else if(!vaccine) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please vaccine with terms of service'),
+                        ),
+                      );
+                    }
+                  }
                 ),
               ),
               const SizedBox(

@@ -116,7 +116,7 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                       alignment: Alignment.bottomRight,
                       child: TweenAnimationBuilder<double>(
                         tween: Tween<double>(begin: 0.1, end: 1.0),
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         curve: Curves.easeOut,
                         builder: (context, value, child) {
                           return Transform.scale(
@@ -124,7 +124,7 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                             child: child,
                           );
                         },
-                        child: Image(
+                        child: const Image(
                             height: 200,
                             width: 260,
                             image: AssetImage('assets/images/tim_toomey_unsplash_preview_1.png'),
@@ -231,10 +231,11 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
               )
             ],
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
             child: Container(
-              height: 480,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(20),),
@@ -244,7 +245,7 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                         'Terms & Condition',
                       style: TextStyle(
                         color: Color(0xff140501),
@@ -263,7 +264,7 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                           child: child,
                         );
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
@@ -308,7 +309,7 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                           child: child,
                         );
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image(
@@ -349,7 +350,8 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                         Navigator.pushNamed(context, RouterName.happyDealReservationPage);
                       },
                       title: 'GET IT NOW',
-                    )
+                    ),
+                    const SizedBox(height: 20,),
                   ],
                 ),
               )

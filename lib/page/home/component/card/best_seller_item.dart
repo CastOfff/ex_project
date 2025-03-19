@@ -1,9 +1,18 @@
 
+import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+import '../../../../data/model/product.dart';
 
+class BestSellerItem extends StatefulWidget {
+  final Product product;
+  const BestSellerItem({super.key, required this.product});
+
+  @override
+  State<BestSellerItem> createState() => _BestSellerItemState();
+}
+
+class _BestSellerItemState extends State<BestSellerItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,9 +25,22 @@ class BestSellerItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image(image: AssetImage('assets/images/beef ribs.png')),
-          Text('Beef Ribs', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
-          Row(
+          Image(
+            image: NetworkImage(widget.product.image!),
+            width: 104,
+            height: 104,
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              widget.product.name!,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.location_on, fill: 0, color: Colors.black87, size: 10,),
@@ -27,7 +49,7 @@ class BestSellerItem extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-
+                Navigator.pushNamed(context, RouterName.reservationPage);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFAD3F32),
@@ -37,7 +59,7 @@ class BestSellerItem extends StatelessWidget {
                 ),
                 minimumSize: const Size(129, 35),
               ),
-              child: Text('Reserve', style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),)
+              child: const Text('Reserve', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),)
           )
         ],
       ),

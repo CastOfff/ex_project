@@ -47,5 +47,15 @@ class UserService {
     return User.fromJson(data);
   }
 
+  Future<User?> createUser(User user) async {
+    final response = await http.post(
+      Uri.https(domain, '/users'),
+      headers: getHeader(),
+      body: jsonEncode(user.toJson()
+      ),
+    );
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+    return User.fromJson(data);
+  }
 
 }

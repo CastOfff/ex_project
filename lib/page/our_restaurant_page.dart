@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../core/constants/color.dart';
 import '../core/widget/our_restaurant_card.dart';
-import '../restaurant_list.dart';
+import '../data/local_storage/restaurant_list.dart';
 
 class OurRestaurantPage extends StatefulWidget {
   const OurRestaurantPage({super.key});
