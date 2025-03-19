@@ -7,7 +7,7 @@ import '../../../data/local_storage/user_preferences.dart';
 import '../../../data/model/user.dart';
 import '../../../date_time.dart';
 import '../../happy_deal_reservation/date_reservation_picked.dart';
-import 'sheet/confirm_reservation_sheet.dart';
+import '../sheet/confirm_reservation_sheet.dart';
 
 class ReservationTab extends StatefulWidget {
   const ReservationTab({super.key});

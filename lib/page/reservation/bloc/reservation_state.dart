@@ -11,3 +11,8 @@ final class ReservationFetchRestaurantSuccess extends ReservationState {
   final Restaurant? restaurant;
   ReservationFetchRestaurantSuccess({required this.restaurant});
 }
+
+final class ReservationSuccess extends ReservationState {
+  final Reservation? reservation;
+  ReservationSuccess({required this.reservation});
+}

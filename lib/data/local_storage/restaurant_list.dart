@@ -1,3 +1,5 @@
+import '../model/restaurant.dart';
+
 List<Map<String, dynamic>> restaurantList = [
   {
     "name": "An BBQ Dong Khoi",
@@ -20,3 +22,6 @@ List<Map<String, dynamic>> restaurantList = [
     "image": "assets/images/our restaurant.png"
   }
 ];
+
+// List<Restaurant> restaurants =
+// restaurantList.map((json) => Restaurant.fromJson(json)).toList();

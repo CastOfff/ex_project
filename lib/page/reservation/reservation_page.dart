@@ -17,7 +17,6 @@ class _ReservationPageState extends State<ReservationPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   final reservationBloc = ReservationBloc()..add(ReservationFetchEvent(0));
-
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
