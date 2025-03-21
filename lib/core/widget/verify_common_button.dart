@@ -8,6 +8,7 @@ class VerifyCommonButton extends StatefulWidget {
   final double height;
   final TextStyle? style;
   final EdgeInsets? padding;
+  final BorderRadius? borderRadius;
   const VerifyCommonButton(
       {super.key,
       required this.onPressed,
@@ -15,7 +16,7 @@ class VerifyCommonButton extends StatefulWidget {
       this.width = 500,
       this.height = 44,
       this.style,
-        this.padding});
+        this.padding, this.borderRadius});
 
   @override
   State<VerifyCommonButton> createState() => _VerifyCommonButtonState();
@@ -31,7 +32,7 @@ class _VerifyCommonButtonState extends State<VerifyCommonButton> {
           backgroundColor: const Color(0xFFAD3F32),
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(10),
           ),
           minimumSize: Size(widget.width, widget.height),
           maximumSize: const Size(double.infinity, 50),

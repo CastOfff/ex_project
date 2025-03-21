@@ -91,12 +91,15 @@ class _LargeDiscountsPageState extends State<LargeDiscountsPage> with SingleTick
                             SizedBox(
                               width: 12,
                             ),
-                            Text(
-                              'Discounts',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600,
+                            Flexible(
+                              child: Text(
+                                'Discounts',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                maxLines: 1,
                               ),
                             ),
                           ],

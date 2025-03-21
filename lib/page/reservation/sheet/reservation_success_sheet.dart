@@ -44,9 +44,9 @@ class _ReservationSuccessSheetState extends State<ReservationSuccessSheet> {
             const SizedBox(
              height: 16,
             ),
-            const Text(
-              'Your deposit for Reservation 716001 is 200.000VND. \nDo you want to pay now?',
-              style: TextStyle(
+            Text(
+              'Your deposit for Reservation #${widget.reservation.id} is 200.000VND. \nDo you want to pay now?',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -67,7 +67,7 @@ class _ReservationSuccessSheetState extends State<ReservationSuccessSheet> {
             ),
             Text(widget.reservation.restaurant?.name ?? '',),
             Text(widget.reservation.restaurant?.address ?? '',),
-            Text(widget.reservation.date ?? '',),
+            Text('${widget.reservation.date}'),
             Text(widget.reservation.time ?? '',),
             Text('${widget.reservation.numberOfPeople} people',),
             Text(widget.reservation.note ?? '',),

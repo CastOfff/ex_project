@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 import 'package:ex_project/core/constants/color.dart';
 import 'package:flutter/material.dart';
 
@@ -10,16 +8,26 @@ class FlashOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 2.0,),
       width: double.infinity,
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color(0xFFFFC8C8)
+        color: const Color(0xFFFFC8C8)
       ),
-      child: Stack(
+      child: const Stack(
         children: [
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Image(image: AssetImage(
+              'assets/images/Meal.png',
+            ),
+              width: 218,
+              height: 134,
+              fit: BoxFit.cover,),
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,15 +70,6 @@ class FlashOrderCard extends StatelessWidget {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image(image: AssetImage(
-              'assets/images/Meal.png',
-            ),
-            width: 218,
-            height: 134,
-            fit: BoxFit.cover,),
-          )
         ],
       ),
     );

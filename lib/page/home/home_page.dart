@@ -46,19 +46,34 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(Icons.location_on, fill: 0, color: Colors.black87,),
             SizedBox(width: 10,),
-            Text(
-              'Dong Khoi St, District 1',
+            Flexible(
+              child: Text(
+                'Dong Khoi St, District 1',
+              ),
             )
           ],
         ),
         centerTitle: true,
-        actions: const [
-          CircleAvatar(
-              backgroundColor: Colors.white,
-              maxRadius: 20,
-              child: Icon(Icons.notifications_none, color: Colors.black, size: 32,)
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                    context,
+                    RouterName.yourReservationPage
+                );
+              },
+              icon: const CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 32,
+                ),
+              ),
           ),
-          SizedBox(width: 20,),
+          const SizedBox(
+            width: 20,
+          ),
         ],
       ),
       drawer: BlocProvider<LoginBloc>(
@@ -156,6 +171,7 @@ class _HomePageState extends State<HomePage> {
                 children: List.generate(3, (index) => OurRestaurantCard(
                   name: restaurantList[index]['name'],
                   address: restaurantList[index]['address'],
+                  image: restaurantList[index]['image'],
                 )),
               ),
               TitleHomeScreen(

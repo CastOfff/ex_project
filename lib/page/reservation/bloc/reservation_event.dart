@@ -9,6 +9,6 @@ class ReservationFetchEvent extends ReservationEvent{
 }
 
 class ReservationSuccessEvent extends ReservationEvent{
-  final Reservation reservation;
+  final Reservation? reservation;
   ReservationSuccessEvent(this.reservation);
 }

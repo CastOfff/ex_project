@@ -480,7 +480,7 @@ class _ReservationTabState extends State<ReservationTab> {
                               description: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
                               address: 'An BBQ Dong Khoi',
                               time: _selectedTime ?? '',
-                              date: '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                              date: selectedDate,
                               people: people,
                               note: _controller.text == '' ? 'Window Seats' :_controller.text ,
                               fullName: _fullNameController.text == '' ? '${user.name}' : _fullNameController.text,

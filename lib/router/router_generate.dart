@@ -17,6 +17,7 @@ import '../page/our_restaurant_page.dart';
 import '../page/product/product_best_seller_page.dart';
 import '../page/happy_deals.dart';
 import '../page/reservation/large_discounts_page.dart';
+import '../page/your_reservation/your_reservation_page.dart';
 import 'animation_router_page.dart';
 
 class RouteGenerator {
@@ -72,6 +73,9 @@ class RouteGenerator {
 
       case RouterName.reservationPage:
         return animationRouterPage(page: const ReservationPage());
+
+      case RouterName.yourReservationPage:
+        return animationRouterPage(page: const YourReservationPage());
 
       default:
         return null;

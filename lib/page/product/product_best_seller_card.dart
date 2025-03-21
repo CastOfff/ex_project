@@ -57,6 +57,7 @@ class _ProductBestSellerState extends State<ProductBestSeller> {
                         Text(
                           widget.product.name!,
                           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                          maxLines: 1,
                         ),
                         Text(widget.product.description!,
                             style: const TextStyle(fontSize: 10),

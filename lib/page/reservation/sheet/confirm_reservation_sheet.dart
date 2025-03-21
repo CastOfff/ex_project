@@ -16,7 +16,7 @@ class ConfirmReservationSheet extends StatefulWidget {
   final String email;
   final String address;
   final String description;
-  final String date;
+  final DateTime date;
   final String time;
   final int people;
   final String note;
@@ -135,7 +135,7 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
                       width: 14,
                     ),
                     Text(
-                      widget.date,
+                      '${widget.date}',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
@@ -344,13 +344,13 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
-                          } else if (state is ReservationSuccess) {
+                          }
+                          if (state is ReservationSuccess) {
                             return ReservationSuccessSheet(
                               reservation: state.reservation!,
                             );
-                          } else {
-                            return const SizedBox();
                           }
+                          return const SizedBox();
                         }
                       );
                     },

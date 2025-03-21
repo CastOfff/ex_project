@@ -1,6 +1,4 @@
-
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/reservation.dart';
@@ -10,9 +8,8 @@ class ReservationPreferences {
 
   static Future<void> saveReservations(List<Reservation> reservations) async {
     final prefs = await SharedPreferences.getInstance();
-    final List<String> jsonList = reservations
-        .map((reservation) => jsonEncode(reservation.toJson()))
-        .toList();
+    final List<String> jsonList =
+    reservations.map((reservation) => jsonEncode(reservation.toJson())).toList();
     await prefs.setStringList(_reservationKey, jsonList);
   }
 
@@ -26,9 +23,14 @@ class ReservationPreferences {
   }
 
   static Future<void> addReservation(Reservation reservation) async {
-    final reservations = await getReservations();
-    reservations.add(reservation);
-    await saveReservations(reservations);
+    final prefs = await SharedPreferences.getInstance();
+    final List<String> jsonList = prefs.getStringList(_reservationKey) ?? [];
+
+    reservation.id = jsonList.length;
+
+    jsonList.add(jsonEncode(reservation.toJson()));
+
+    await prefs.setStringList(_reservationKey, jsonList);
   }
 
   static Future<void> clearReservations() async {

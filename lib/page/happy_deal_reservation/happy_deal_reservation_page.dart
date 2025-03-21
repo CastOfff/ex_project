@@ -125,12 +125,15 @@ class _HappyDealReservationPageState extends State<HappyDealReservationPage> {
                               SizedBox(
                                 width: 12,
                               ),
-                              Text(
-                                'Discounts',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w600,
+                              Flexible(
+                                child: Text(
+                                  'Discounts',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  maxLines: 1,
                                 ),
                               ),
                             ],
@@ -229,62 +232,68 @@ class _HappyDealReservationPageState extends State<HappyDealReservationPage> {
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 10),
-                                      height: 36,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Colors.white,
+                                Flexible(
+                                  child: Row(
+                                    children: [
+                                      Flexible(
+                                        child: Container(
+                                          padding:
+                                              const EdgeInsets.symmetric(horizontal: 10),
+                                          height: 36,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color: Colors.white,
+                                          ),
+                                          child: DropdownButtonHideUnderline(
+                                              child: DropdownButton<DateTime>(
+                                            value: selectedMonth,
+                                            items: months.map((month) {
+                                              return DropdownMenuItem(
+                                                value:
+                                                    DateTime(month.year, month.month),
+                                                child: Text(
+                                                    '${monthsOfYear[month.month - 1]['name']}',
+                                                  style: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              );
+                                            }).toList(),
+                                            onChanged: (value) {
+                                              if (value != null) {
+                                                setState(() {
+                                                  selectedMonth = DateTime(
+                                                      value.year, value.month);
+                                                });
+                                              }
+                                            },
+                                          )),
+                                        ),
                                       ),
-                                      child: DropdownButtonHideUnderline(
-                                          child: DropdownButton<DateTime>(
-                                        value: selectedMonth,
-                                        items: months.map((month) {
-                                          return DropdownMenuItem(
-                                            value:
-                                                DateTime(month.year, month.month),
+                                      const SizedBox(
+                                        width: 12,
+                                      ),
+                                      Flexible(
+                                        child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12.0, vertical: 5),
+                                            height: 36,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
                                             child: Text(
-                                                '${monthsOfYear[month.month - 1]['name']}',
+                                                '${today.year}',
                                               style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w400,
                                               ),
-                                            ),
-                                          );
-                                        }).toList(),
-                                        onChanged: (value) {
-                                          if (value != null) {
-                                            setState(() {
-                                              selectedMonth = DateTime(
-                                                  value.year, value.month);
-                                            });
-                                          }
-                                        },
-                                      )),
-                                    ),
-                                    const SizedBox(
-                                      width: 12,
-                                    ),
-                                    Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12.0, vertical: 5),
-                                        height: 36,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(12),
+                                            )
                                         ),
-                                        child: Text(
-                                            '${today.year}',
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        )
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 )
                               ],
                             ),

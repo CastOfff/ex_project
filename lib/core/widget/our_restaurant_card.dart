@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class OurRestaurantCard extends StatefulWidget {
   final String name;
   final String address;
-  // final String image;
+  final String image;
 
   const OurRestaurantCard(
       {super.key,
       required this.name,
-      required this.address});
+      required this.address, required this.image});
 
   @override
   State<OurRestaurantCard> createState() => _OurRestaurantCardState();
@@ -25,7 +25,7 @@ class _OurRestaurantCardState extends State<OurRestaurantCard> {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: Image(image: AssetImage('assets/images/our restaurant.png')),
+            child: Image(image: AssetImage(widget.image)),
           ),
           Align(
             alignment: Alignment.bottomCenter,

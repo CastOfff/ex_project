@@ -1,6 +1,3 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../core/constants/color.dart';
@@ -31,7 +28,7 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -67,7 +64,7 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
                 //     ))
               ],
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Expanded(
               child: ListView.builder(
                 itemCount: restaurantList.length,
@@ -77,6 +74,7 @@ class _OurRestaurantPageState extends State<OurRestaurantPage> {
                       child: OurRestaurantCard(
                         name: restaurantList[index]['name'],
                         address: restaurantList[index]['address'],
+                        image: restaurantList[index]['image'],
                       ),
                     );
                   },),

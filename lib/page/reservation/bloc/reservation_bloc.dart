@@ -25,7 +25,7 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       Reservation? reservation = event.reservation;
       await Future.delayed(const Duration(seconds: 2));
       emit(ReservationSuccess(reservation: reservation));
-      ReservationPreferences.addReservation(reservation);
+      ReservationPreferences.addReservation(reservation!);
     });
   }
 
