@@ -30,5 +30,7 @@ class RouterName {
 
   static const editProfilePage = '/edit_profile_page';
 
-  static const yourReservationPage = '/your_reservation_page';
+  static const reservationHistoryPage = '/reservation_history_page';
+
+  static const reservationDetailPage = '/reservation_detail_page';
 }

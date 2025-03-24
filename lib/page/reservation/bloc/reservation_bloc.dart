@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 import '../../../data/local_storage/reservation_preferences.dart';
 import '../../../data/local_storage/restaurant_list.dart';
-import '../../../data/model/reservation.dart';
+import '../../../data/model/reservation/reservation.dart';
 import '../../../data/model/restaurant.dart';
 
 part 'reservation_event.dart';

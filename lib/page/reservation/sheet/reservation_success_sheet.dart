@@ -1,8 +1,9 @@
 
+import 'package:ex_project/data/model/reservation/reservation_status.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widget/verify_common_button.dart';
-import '../../../data/model/reservation.dart';
+import '../../../data/model/reservation/reservation.dart';
 
 class ReservationSuccessSheet extends StatefulWidget {
   final Reservation reservation;
@@ -65,15 +66,7 @@ class _ReservationSuccessSheetState extends State<ReservationSuccessSheet> {
             const SizedBox(
               height: 16,
             ),
-            Text(widget.reservation.restaurant?.name ?? '',),
-            Text(widget.reservation.restaurant?.address ?? '',),
-            Text('${widget.reservation.date}'),
-            Text(widget.reservation.time ?? '',),
-            Text('${widget.reservation.numberOfPeople} people',),
-            Text(widget.reservation.note ?? '',),
-            Text(widget.reservation.user?.name ?? '',),
-            Text(widget.reservation.user?.phone ?? '',),
-            Text(widget.reservation.user?.email ?? '',),
+            Text('${widget.reservation.reservationHistoryDetail?.statusList.last.convertToString} - ${widget.reservation.reservationHistoryDetail?.timeLine.last}'),
             const Spacer(),
             const Text(
               'Note: If the customer cancels the reservation due to subjective reasons, the restaurant will not be responsible for refunding the deposit.',

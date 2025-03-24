@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/reservation.dart';
+import '../model/reservation/reservation.dart';
 
 class ReservationPreferences {
   static const String _reservationKey = 'reservations';

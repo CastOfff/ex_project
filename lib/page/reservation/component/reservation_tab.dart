@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../core/widget/common_text_field.dart';
 import '../../../core/widget/verify_common_button.dart';
 import '../../../data/local_storage/user_preferences.dart';
+import '../../../data/model/reservation/reservation_history_detail.dart';
+import '../../../data/model/reservation/reservation_status.dart';
 import '../../../data/model/user.dart';
 import '../../../date_time.dart';
 import '../../happy_deal_reservation/date_reservation_picked.dart';
@@ -32,7 +34,7 @@ class _ReservationTabState extends State<ReservationTab> {
   final TextEditingController _emailController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   // Hàm lấy danh sách ngày
-  List<DateTime> getDaysInMonth(int year, int month) {
+  List<DateTime> getDaysInMonth(int year, int month,) {
     DateTime today = DateTime.now();
     DateTime firstDay = DateTime(year, month, 1);
     DateTime nextMonth = DateTime(year, month + 1, 1);
@@ -175,8 +177,10 @@ class _ReservationTabState extends State<ReservationTab> {
                               setState(() {
                                 selectedDate = getDaysInMonth(
                                     selectedMonth.year,
-                                    selectedMonth.month)[index];
+                                    selectedMonth.month,
+                                )[index];
                               });
+
                             },
                             child: DateReservationPicked(
                               today: today,
@@ -476,6 +480,11 @@ class _ReservationTabState extends State<ReservationTab> {
                       showBottomSheet(
                           context: context,
                           builder: (context) {
+                            ReservationHistoryDetail reservationHistoryDetail = ReservationHistoryDetail(
+                              statusList: [],
+                              timeLine: []
+                            );
+                            reservationHistoryDetail.addHistoryEntry(ReservationStatus.reserved, DateTime.now());
                             return ConfirmReservationSheet(
                               description: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
                               address: 'An BBQ Dong Khoi',
@@ -486,6 +495,7 @@ class _ReservationTabState extends State<ReservationTab> {
                               fullName: _fullNameController.text == '' ? '${user.name}' : _fullNameController.text,
                               phone: _phoneController.text == '' ? '${user.phone}' : _phoneController.text,
                               email: _emailController.text == '' ? '${user.email}' : _emailController.text,
+                              reservationHistoryDetail: reservationHistoryDetail,
                             );
                           },
                       );

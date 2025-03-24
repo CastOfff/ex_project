@@ -1,27 +1,30 @@
 import 'package:ex_project/core/widget/verify_common_button.dart';
+import 'package:ex_project/data/model/reservation/reservation_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../core/constants/color.dart';
-import '../../data/model/reservation.dart';
-import 'bloc/your_reservation_bloc.dart';
+import '../../../core/constants/color.dart';
+import '../../../data/model/reservation/reservation.dart';
+import '../../../router/router_name.dart';
+import 'bloc/reservation_history_bloc.dart';
 
-class YourReservationPage extends StatefulWidget {
-  const YourReservationPage({super.key});
+
+class ReservationHistoryPage extends StatefulWidget {
+  const ReservationHistoryPage({super.key});
 
   @override
-  State<YourReservationPage> createState() => _YourReservationPageState();
+  State<ReservationHistoryPage> createState() => _ReservationHistoryPageState();
 }
 
-class _YourReservationPageState extends State<YourReservationPage> {
-  late YourReservationBloc yourReservationBloc;
+class _ReservationHistoryPageState extends State<ReservationHistoryPage> {
+  late ReservationHistoryBloc yourReservationBloc;
 
   @override
   void initState() {
     super.initState();
-    yourReservationBloc = YourReservationBloc()
-      ..add(YourReservationFetchEvent());
+    yourReservationBloc = ReservationHistoryBloc()
+      ..add(ReservationHistoryFetchEvent());
   }
 
   @override
@@ -32,7 +35,7 @@ class _YourReservationPageState extends State<YourReservationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<YourReservationBloc>.value(
+    return BlocProvider<ReservationHistoryBloc>.value(
       value: yourReservationBloc,
       child: Scaffold(
         appBar: AppBar(
@@ -59,12 +62,12 @@ class _YourReservationPageState extends State<YourReservationPage> {
               ),
             ),
             Expanded(
-              child: BlocBuilder<YourReservationBloc, YourReservationState>(
+              child: BlocBuilder<ReservationHistoryBloc, ReservationHistoryState>(
                 builder: (context, state) {
-                  if (state is YourReservationLoading) {
+                  if (state is ReservationHistoryLoading) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state is YourReservationLoadingSuccess) {
+                  if (state is ReservationHistoryLoadingSuccess) {
                     if (state.reservations.isEmpty) {
                       return const Center(child: Text('No reservations found'));
                     }
@@ -151,7 +154,13 @@ class _YourReservationPageState extends State<YourReservationPage> {
                                     ),
                                   ),
                                   IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context,
+                                            RouterName.reservationDetailPage,
+                                            arguments: reservation.id
+                                        );
+                                      },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_outlined,
                                         size: 16,
@@ -159,7 +168,7 @@ class _YourReservationPageState extends State<YourReservationPage> {
                                       )),
                                   VerifyCommonButton(
                                     onPressed: () {},
-                                    title: 'Pending',
+                                    title: '${reservation.reservationHistoryDetail?.statusList.last.convertToString()}',
                                     borderRadius: BorderRadius.circular(0),
                                     style: const TextStyle(
                                       fontSize: 13,
@@ -179,7 +188,7 @@ class _YourReservationPageState extends State<YourReservationPage> {
                       },
                     );
                   }
-                  if (state is YourReservationLoadingFailure) {
+                  if (state is ReservationHistoryLoadingFailure) {
                     return Center(child: Text('Error: ${state.error}'));
                   }
                   return const SizedBox();

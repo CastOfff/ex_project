@@ -1,7 +1,7 @@
 import 'package:ex_project/page/reservation/reservation_page.dart';
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../page/authentication/get_otp.dart';
 import '../page/authentication/login_page.dart';
 import '../page/authentication/new_pass_word_page.dart';
@@ -17,7 +17,9 @@ import '../page/our_restaurant_page.dart';
 import '../page/product/product_best_seller_page.dart';
 import '../page/happy_deals.dart';
 import '../page/reservation/large_discounts_page.dart';
-import '../page/your_reservation/your_reservation_page.dart';
+import '../page/reservation_history_detail/reservation_detail/bloc/reservation_detail_bloc.dart';
+import '../page/reservation_history_detail/reservation_detail/reservation_detail_page.dart';
+import '../page/reservation_history_detail/reservation_history/reservation_history_page.dart';
 import 'animation_router_page.dart';
 
 class RouteGenerator {
@@ -74,8 +76,18 @@ class RouteGenerator {
       case RouterName.reservationPage:
         return animationRouterPage(page: const ReservationPage());
 
-      case RouterName.yourReservationPage:
-        return animationRouterPage(page: const YourReservationPage());
+      case RouterName.reservationHistoryPage:
+        return animationRouterPage(page: const ReservationHistoryPage());
+
+      case RouterName.reservationDetailPage:
+        final int index = settings.arguments as int; ;
+        return animationRouterPage(
+          page: BlocProvider(
+            create: (context) => ReservationDetailBloc()
+              ..add(ReservationDetailFetchEvent(index: index)),
+            child: const ReservationDetailPage(),
+          ),
+        );
 
       default:
         return null;

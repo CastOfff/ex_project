@@ -3,7 +3,6 @@ import 'package:ex_project/page/edit_profile/edit_profile_page.dart';
 import 'package:ex_project/page/home/home_page.dart';
 import 'package:ex_project/page/notification/notification_page.dart';
 import 'package:ex_project/page/reservation/reservation_page.dart';
-import 'package:ex_project/page/your_reservation/your_reservation_page.dart';
 import 'package:ex_project/router/router_generate.dart';
 import 'package:ex_project/router/router_name.dart';
 

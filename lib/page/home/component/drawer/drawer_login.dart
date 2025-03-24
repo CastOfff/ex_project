@@ -58,6 +58,10 @@ class _DrawerLoginState extends State<DrawerLogin> {
                 ),
                 ActionButton(
                   onPressed: () {
+                    Navigator.pushNamed(
+                        context,
+                        RouterName.reservationHistoryPage
+                    );
                   },
                   title: 'Reservation',
                   icon: const Icon(Icons.menu,size: 22, color: primaryColor,),

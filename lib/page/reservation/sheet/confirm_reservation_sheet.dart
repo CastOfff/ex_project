@@ -7,7 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widget/verify_common_button.dart';
 import '../../../../data/model/user.dart';
 import '../../../data/local_storage/user_preferences.dart';
-import '../../../data/model/reservation.dart';
+import '../../../data/model/reservation/reservation.dart';
+import '../../../data/model/reservation/reservation_history_detail.dart';
+import '../../../data/model/reservation/reservation_status.dart';
 import '../bloc/reservation_bloc.dart';
 
 class ConfirmReservationSheet extends StatefulWidget {
@@ -20,6 +22,7 @@ class ConfirmReservationSheet extends StatefulWidget {
   final String time;
   final int people;
   final String note;
+  final ReservationHistoryDetail reservationHistoryDetail;
 
   const ConfirmReservationSheet(
       {super.key,
@@ -28,7 +31,11 @@ class ConfirmReservationSheet extends StatefulWidget {
       required this.date,
       required this.time,
       required this.people,
-      required this.note, required this.fullName, required this.phone, required this.email});
+      required this.note,
+      required this.fullName,
+      required this.phone,
+      required this.email, required this.reservationHistoryDetail,
+      });
 
   @override
   State<ConfirmReservationSheet> createState() =>
@@ -326,13 +333,16 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
             VerifyCommonButton(
               title: 'CONFIRM',
               onPressed: () {
+                widget.reservationHistoryDetail.addHistoryEntry(ReservationStatus.pending, DateTime.now());
                 Reservation? reservation = Reservation(
                   user: user,
                   restaurant: restaurant,
                   date: widget.date,
+                  orderTime: DateTime.now(),
                   numberOfPeople: widget.people,
                   note: widget.note,
                   time: widget.time,
+                  reservationHistoryDetail: widget.reservationHistoryDetail,
                 );
                 context.read<ReservationBloc>().add(ReservationSuccessEvent(reservation));
                 showBottomSheet(
