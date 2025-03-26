@@ -14,3 +14,6 @@ final class ReservationDetailLoadingFailure extends ReservationDetailState {
   final String error;
   ReservationDetailLoadingFailure({required this.error});
 }
+
+final class ReservationSendReview extends ReservationDetailState {}
+final class ReservationSendReviewSuccess extends ReservationDetailState {}

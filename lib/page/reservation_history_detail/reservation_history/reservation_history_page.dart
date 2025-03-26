@@ -155,11 +155,20 @@ class _ReservationHistoryPageState extends State<ReservationHistoryPage> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context,
-                                            RouterName.reservationDetailPage,
-                                            arguments: reservation.id
-                                        );
+                                        if (reservation.reservationHistoryDetail?.statusList.last == ReservationStatus.finished){
+                                          Navigator.pushNamed(
+                                              context,
+                                              RouterName.reservationReviewPage,
+                                              arguments: reservation.id
+                                          );
+                                        } else{
+                                          Navigator.pushNamed(
+                                              context,
+                                              RouterName.reservationDetailPage,
+                                              arguments: reservation.id
+                                          );
+                                        }
+
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_outlined,

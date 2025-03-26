@@ -13,6 +13,20 @@ class ReservationPreferences {
     await prefs.setStringList(_reservationKey, jsonList);
   }
 
+  static Future<void> updateReservation(Reservation reservation) async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String> jsonList = prefs.getStringList(_reservationKey) ?? [];
+    int index = jsonList.indexWhere((jsonString) {
+      final decodedJson = jsonDecode(jsonString) as Map<String, dynamic>;
+      final existingReservation = Reservation.fromJson(decodedJson);
+      return existingReservation.id == reservation.id;
+    });
+    if (index != -1) {
+      jsonList[index] = jsonEncode(reservation.toJson());
+      await prefs.setStringList(_reservationKey, jsonList);
+    }
+
+  }
   static Future<List<Reservation>> getReservations() async {
     final prefs = await SharedPreferences.getInstance();
     final List<String>? jsonList = prefs.getStringList(_reservationKey);

@@ -7,3 +7,8 @@ class ReservationDetailFetchEvent extends ReservationDetailEvent{
   final int? index;
   ReservationDetailFetchEvent({required this.index});
 }
+
+class ReservationSendReviewEvent extends ReservationDetailEvent{
+  final Reservation reservation;
+  ReservationSendReviewEvent({required this.reservation});
+}

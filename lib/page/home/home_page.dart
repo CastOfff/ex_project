@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () {
+                Navigator.pushNamed(context, RouterName.notificationPage);
               },
               icon: const CircleAvatar(
                 backgroundColor: Colors.white,

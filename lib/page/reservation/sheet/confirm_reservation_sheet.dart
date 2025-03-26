@@ -333,7 +333,7 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
             VerifyCommonButton(
               title: 'CONFIRM',
               onPressed: () {
-                widget.reservationHistoryDetail.addHistoryEntry(ReservationStatus.pending, DateTime.now());
+                // widget.reservationHistoryDetail.addHistoryEntry(ReservationStatus.pending, DateTime.now());
                 Reservation? reservation = Reservation(
                   user: user,
                   restaurant: restaurant,

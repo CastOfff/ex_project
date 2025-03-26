@@ -17,10 +17,23 @@ class ReservationDetailBloc extends Bloc<ReservationDetailEvent, ReservationDeta
         Reservation reservation = reservations.firstWhere((element) => element.id == event.index);
         if (reservations.isNotEmpty){
           emit(ReservationDetailLoadingSuccess(reservation: reservation));
+          await ReservationPreferences.updateReservation(reservation);
         } else{
           emit(ReservationDetailLoadingFailure(error: 'No reservations found'));
         }
       } catch (e){
+        if (e is Exception){
+          emit(ReservationDetailLoadingFailure(error: 'Failed to load reservations'));
+        }
+      }
+    });
+    on<ReservationSendReviewEvent>((event, emit) async {
+      // TODO: implement event handler
+      emit(ReservationSendReview());
+      try{
+        await ReservationPreferences.updateReservation(event.reservation);
+        emit(ReservationSendReviewSuccess());
+        } catch (e){
         if (e is Exception){
           emit(ReservationDetailLoadingFailure(error: 'Failed to load reservations'));
         }

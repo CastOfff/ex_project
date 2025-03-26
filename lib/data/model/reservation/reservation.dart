@@ -12,7 +12,7 @@ class Reservation {
   int? numberOfPeople;
   String? note;
   String? time;
-  String? rating;
+  double? rating;
   String? image;
   String? comment;
   ReservationHistoryDetail? reservationHistoryDetail;
@@ -54,8 +54,8 @@ class Reservation {
       restaurant: json['restaurant'] != null
           ? Restaurant.fromJson(json['restaurant'])
           : null,
-      date: DateTime.parse(json['date']),
-      orderTime: DateTime.parse(json['orderTime']),
+      date: DateTime.tryParse(json['date']),
+      orderTime: DateTime.tryParse(json['orderTime'] ?? ''),
       numberOfPeople: json['numberOfPeople'],
       note: json['note'],
       time: json['time'],

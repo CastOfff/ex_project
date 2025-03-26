@@ -480,11 +480,12 @@ class _ReservationTabState extends State<ReservationTab> {
                       showBottomSheet(
                           context: context,
                           builder: (context) {
-                            ReservationHistoryDetail reservationHistoryDetail = ReservationHistoryDetail(
-                              statusList: [],
-                              timeLine: []
-                            );
-                            reservationHistoryDetail.addHistoryEntry(ReservationStatus.reserved, DateTime.now());
+                            // ReservationHistoryDetail reservationHistoryDetail = ReservationHistoryDetail(
+                            //   statusList: [],
+                            //   timeLine: []
+                            // );
+                            // reservationHistoryDetail.addHistoryEntry(ReservationStatus.reserved, DateTime.now());
+                            ReservationHistoryDetail reservationHistoryDetail = randomReservationHistoryDetail();
                             return ConfirmReservationSheet(
                               description: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
                               address: 'An BBQ Dong Khoi',

@@ -11,6 +11,7 @@ import '../page/authentication/verify_otp.dart';
 import '../page/edit_profile/edit_profile_page.dart';
 import '../page/happy_deal_reservation/happy_deal_reservation_page.dart';
 import '../page/home/home_page.dart';
+import '../page/notification/notification_page.dart';
 import '../page/onboard/onboard_page/onboard_page.dart';
 import '../page/onboard/splash/splash_page.dart';
 import '../page/our_restaurant_page.dart';
@@ -19,6 +20,7 @@ import '../page/happy_deals.dart';
 import '../page/reservation/large_discounts_page.dart';
 import '../page/reservation_history_detail/reservation_detail/bloc/reservation_detail_bloc.dart';
 import '../page/reservation_history_detail/reservation_detail/reservation_detail_page.dart';
+import '../page/reservation_history_detail/reservation_detail/reservation_review_page.dart';
 import '../page/reservation_history_detail/reservation_history/reservation_history_page.dart';
 import 'animation_router_page.dart';
 
@@ -88,6 +90,19 @@ class RouteGenerator {
             child: const ReservationDetailPage(),
           ),
         );
+
+        case RouterName.reservationReviewPage:
+          final int index = settings.arguments as int; ;
+          return animationRouterPage(
+            page: BlocProvider(
+              create: (context) => ReservationDetailBloc()
+                ..add(ReservationDetailFetchEvent(index: index)),
+              child: const ReservationReviewPage(),
+            )
+          );
+
+      case RouterName.notificationPage:
+        return animationRouterPage(page: const NotificationPage());
 
       default:
         return null;

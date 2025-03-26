@@ -33,4 +33,8 @@ class RouterName {
   static const reservationHistoryPage = '/reservation_history_page';
 
   static const reservationDetailPage = '/reservation_detail_page';
+
+  static const reservationReviewPage = '/reservation_review_page';
+
+  static const notificationPage = '/notification_page';
 }

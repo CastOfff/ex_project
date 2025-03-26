@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ex_project/data/model/reservation/reservation_status.dart';
 
 class ReservationHistoryDetail {
@@ -30,5 +32,58 @@ class ReservationHistoryDetail {
           .map((dateString) => DateTime.parse(dateString as String))
           .toList(),
     );
+  }
+}
+
+ReservationHistoryDetail mockReservationHistoryDetail1 =
+    ReservationHistoryDetail(statusList: [
+  ReservationStatus.reserved,
+  ReservationStatus.pending,
+  ReservationStatus.deposited,
+  ReservationStatus.confirmed,
+], timeLine: [
+  DateTime.now().subtract(const Duration(days: 1)),
+  DateTime.now().subtract(const Duration(days: 2)),
+  DateTime.now().subtract(const Duration(days: 3)),
+  DateTime.now().subtract(const Duration(days: 4)),
+]);
+
+ReservationHistoryDetail mockReservationHistoryDetail2 =
+ReservationHistoryDetail(statusList: [
+  ReservationStatus.reserved,
+  ReservationStatus.pending,
+  ReservationStatus.deposited,
+  ReservationStatus.confirmed,
+  ReservationStatus.finished,
+], timeLine: [
+  DateTime.now().subtract(const Duration(days: 1)),
+  DateTime.now().subtract(const Duration(days: 2)),
+  DateTime.now().subtract(const Duration(days: 3)),
+  DateTime.now().subtract(const Duration(days: 4)),
+  DateTime.now().subtract(const Duration(days: 5)),
+]);
+
+ReservationHistoryDetail mockReservationHistoryDetail3 =
+ReservationHistoryDetail(statusList: [
+  ReservationStatus.reserved,
+  ReservationStatus.pending,
+  ReservationStatus.deposited,
+], timeLine: [
+  DateTime.now().subtract(const Duration(days: 1)),
+  DateTime.now().subtract(const Duration(days: 2)),
+  DateTime.now().subtract(const Duration(days: 3)),
+]);
+
+ReservationHistoryDetail randomReservationHistoryDetail() {
+  int randomIndex = Random().nextInt(3);
+  switch (randomIndex) {
+    case 0:
+      return mockReservationHistoryDetail1;
+    case 1:
+      return mockReservationHistoryDetail2;
+    case 2:
+      return mockReservationHistoryDetail3;
+    default:
+      return mockReservationHistoryDetail1;
   }
 }

@@ -8,13 +8,14 @@ class ActionButton extends StatefulWidget {
   final double width;
   final double height;
   final Icon icon;
+  final BorderRadius? borderRadius;
 
   const ActionButton({super.key,
     required this.onPressed,
     required this.title,
     required this.icon,
     this.width = 326,
-    this.height = 45});
+    this.height = 45, this.borderRadius});
 
   @override
   State<ActionButton> createState() => _ActionButtonState();
@@ -31,7 +32,7 @@ class _ActionButtonState extends State<ActionButton> {
           minimumSize: Size(widget.width, widget.height),
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
+            borderRadius: widget.borderRadius ?? const BorderRadius.all(Radius.circular(0)),
           ),
         ),
         child: Row(

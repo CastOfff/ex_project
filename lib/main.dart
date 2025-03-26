@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'data/local_storage/app_preferences.dart';
 import 'data/local_storage/reservation_preferences.dart';
 import 'data/local_storage/user_preferences.dart';
+import 'data/model/notification_model.dart';
+import 'data/repository/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +24,9 @@ initPref() async {
   UserPreferences userPreferences = UserPreferences();
   await AppPreference.init();
   await userPreferences.onInit();
+  // await ReservationPreferences.clearReservations();
+  // await NotificationService().saveNotification(mockNotifications);
+  // NotificationService().clearNotifications();
 }
 
 class MyApp extends StatelessWidget {
