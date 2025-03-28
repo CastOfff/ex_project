@@ -9,32 +9,32 @@ import '../../../../data/model/user.dart';
 import '../../../data/local_storage/user_preferences.dart';
 import '../../../data/model/reservation/reservation.dart';
 import '../../../data/model/reservation/reservation_history_detail.dart';
-import '../../../data/model/reservation/reservation_status.dart';
 import '../bloc/reservation_bloc.dart';
 
 class ConfirmReservationSheet extends StatefulWidget {
   final String fullName;
   final String phone;
   final String email;
+  final String nameRestaurant;
   final String address;
-  final String description;
   final DateTime date;
   final String time;
   final int people;
   final String note;
+  final String restaurantId;
   final ReservationHistoryDetail reservationHistoryDetail;
 
   const ConfirmReservationSheet(
       {super.key,
+      required this.nameRestaurant,
       required this.address,
-      required this.description,
       required this.date,
       required this.time,
       required this.people,
       required this.note,
       required this.fullName,
       required this.phone,
-      required this.email, required this.reservationHistoryDetail,
+      required this.email, required this.reservationHistoryDetail, required this.restaurantId,
       });
 
   @override
@@ -51,10 +51,10 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
     user.phone = widget.phone;
     user.email = widget.email;
     Restaurant restaurant = Restaurant(
-      address: widget.description,
-      name: widget.address,
+      id: widget.restaurantId,
+      address: widget.address,
+      name: widget.nameRestaurant,
     );
-
     return SingleChildScrollView(
       child: Container(
         height: MediaQuery.of(context).size.height * 0.75,
@@ -102,7 +102,7 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              widget.address,
+                              widget.nameRestaurant,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -115,7 +115,7 @@ class _ConfirmReservationSheetState extends State<ConfirmReservationSheet> {
                               height: 4,
                             ),
                             Text(
-                              widget.description,
+                              widget.address,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,

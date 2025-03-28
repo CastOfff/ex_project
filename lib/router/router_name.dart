@@ -24,7 +24,7 @@ class RouterName {
 
   static const productBestSellerPage = '/product_best_seller_page';
 
-  static const happyDeals = '/happy_deals';
+  static const happyDealsPage = '/happy_deals_page';
 
   static const reservationPage = '/reservation_page';
 

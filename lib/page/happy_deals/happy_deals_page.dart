@@ -1,56 +1,84 @@
+import 'package:ex_project/core/constants/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'reservation/large_discounts_page.dart';
-import '../router/router_name.dart';
+import '../../data/model/happy_deal.dart';
+import 'bloc/happy_deals_bloc.dart';
+import 'happy_deals_card/happy_deal_card_1.dart';
+import 'happy_deals_card/happy_deal_card_2.dart';
+import 'large_discounts_page.dart';
+import '../../router/router_name.dart';
 
-class HappyDeals extends StatefulWidget {
-  const HappyDeals({super.key});
+class HappyDealsPage extends StatefulWidget {
+  const HappyDealsPage({super.key});
 
   @override
-  State<HappyDeals> createState() => _HappyDealsState();
+  State<HappyDealsPage> createState() => _HappyDealsPageState();
 }
 
-class _HappyDealsState extends State<HappyDeals> {
+class _HappyDealsPageState extends State<HappyDealsPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(onPressed: () {
-              Navigator.pop(context);
-            }
-              , icon: const Icon(Icons.keyboard_backspace, size: 30),
-            )
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Happy Deals',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 18,),
-                Expanded(
-                    child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        if (index % 2 == 0){
-                          return buildCard2(context);
-                        } else {
-                          return buildCard1(context);
-                        }
-                      },
-                    )
-                ),
-              ],
+    return BlocProvider(
+      create: (context) => HappyDealsBloc()..add(HappyDealsFetchAllDataEvent()),
+      child: SafeArea(
+          child: Scaffold(
+            backgroundColor: backgroundColor,
+            appBar: AppBar(
+                backgroundColor: backgroundColor,
+              leading: IconButton(onPressed: () {
+                Navigator.pop(context);
+              }
+                , icon: const Icon(Icons.keyboard_backspace, size: 30),
+              )
             ),
-          ),
-        )
+            body: BlocBuilder<HappyDealsBloc, HappyDealsState>(
+              builder: (context, state) {
+                if (state is HappyDealsLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (state is HappyDealsAllDataLoaded) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Happy Deals',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 14,),
+                        Expanded(
+                            child: ListView.builder(
+                              itemCount: mockHappyDeals.length,
+                              itemBuilder: (context, index) {
+                                if (index % 2 == 0){
+                                  return HappyDealCard2(
+                                    happyDeal: mockHappyDeals[index],
+                                  );
+                                } else {
+                                  return HappyDealCard1(
+                                    happyDeal: mockHappyDeals[index],
+                                  );
+                                }
+                              },
+                            )
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                if (state is HappyDealsAllDataError) {
+                  return Center(child: Text(state.message));
+                }
+                return const SizedBox();
+              }
+            ),
+          )
+      ),
     );
   }
 }

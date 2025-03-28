@@ -5,10 +5,9 @@ import '../../../core/widget/common_text_field.dart';
 import '../../../core/widget/verify_common_button.dart';
 import '../../../data/local_storage/user_preferences.dart';
 import '../../../data/model/reservation/reservation_history_detail.dart';
-import '../../../data/model/reservation/reservation_status.dart';
 import '../../../data/model/user.dart';
 import '../../../date_time.dart';
-import '../../happy_deal_reservation/date_reservation_picked.dart';
+import '../../happy_deals/happy_deal_reservation/date_reservation_picked.dart';
 import '../sheet/confirm_reservation_sheet.dart';
 
 class ReservationTab extends StatefulWidget {
@@ -487,8 +486,9 @@ class _ReservationTabState extends State<ReservationTab> {
                             // reservationHistoryDetail.addHistoryEntry(ReservationStatus.reserved, DateTime.now());
                             ReservationHistoryDetail reservationHistoryDetail = randomReservationHistoryDetail();
                             return ConfirmReservationSheet(
-                              description: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
-                              address: 'An BBQ Dong Khoi',
+                              address: 'Vincom Center, No. 70 Le Thanh Ton, Ben Nghe Ward, District 1, HCMC',
+                              nameRestaurant: 'An BBQ Dong Khoi',
+                              restaurantId: '1',
                               time: _selectedTime ?? '',
                               date: selectedDate,
                               people: people,

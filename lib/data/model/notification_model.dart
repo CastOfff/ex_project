@@ -35,7 +35,7 @@ List<NotificationModel> mockNotifications = [
     reservation: Reservation(
       id: 1,
       user: User(id: '101', name: "Nguyễn Văn A"),
-      restaurant: Restaurant(name: "Nhà hàng ABC", address: ''),
+      restaurant: Restaurant(id: '1', name: "Nhà hàng ABC", address: ''),
       date: DateTime.now(),
       numberOfPeople: 4,
       note: "Bàn gần cửa sổ",
@@ -51,7 +51,7 @@ List<NotificationModel> mockNotifications = [
     reservation: Reservation(
       id: 2,
       user: User(id: '102', name: "Trần Thị B"),
-      restaurant: Restaurant(name: "Nhà hàng XYZ", address: ''),
+      restaurant: Restaurant(id: '2', name: "Nhà hàng XYZ", address: ''),
       date: DateTime.now(),
       numberOfPeople: 2,
       note: "Ăn chay",
@@ -67,7 +67,7 @@ List<NotificationModel> mockNotifications = [
     reservation: Reservation(
       id: 3,
       user: User(id: '103', name: "Lê Văn C"),
-      restaurant: Restaurant(name: "Nhà hàng 123", address: ''),
+      restaurant: Restaurant(id: '3',name: "Nhà hàng 123", address: ''),
       date: DateTime.now(),
       numberOfPeople: 6,
       note: "Sinh nhật",
@@ -83,7 +83,7 @@ List<NotificationModel> mockNotifications = [
     reservation: Reservation(
       id: 4,
       user: User(id: '104', name: "Phạm Thị D"),
-      restaurant: Restaurant(name: "Nhà hàng QWE", address: ''),
+      restaurant: Restaurant(id: '4',name: "Nhà hàng QWE", address: ''),
       date: DateTime.now(),
       numberOfPeople: 3,
       note: "Gọi trước món ăn",
@@ -99,7 +99,7 @@ List<NotificationModel> mockNotifications = [
     reservation: Reservation(
       id: 5,
       user: User(id: '105', name: "Hoàng Văn E"),
-      restaurant: Restaurant(name: "Nhà hàng ASD", address: ''),
+      restaurant: Restaurant(id: '5',name: "Nhà hàng ASD", address: ''),
       date: DateTime.now(),
       numberOfPeople: 5,
       note: "Gặp gỡ đối tác",

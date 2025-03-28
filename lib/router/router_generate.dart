@@ -1,7 +1,9 @@
+import 'package:ex_project/page/happy_deals/happy_deals_page.dart';
 import 'package:ex_project/page/reservation/reservation_page.dart';
 import 'package:ex_project/router/router_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../data/model/happy_deal.dart';
 import '../page/authentication/get_otp.dart';
 import '../page/authentication/login_page.dart';
 import '../page/authentication/new_pass_word_page.dart';
@@ -9,15 +11,14 @@ import '../page/authentication/sign_up_page.dart';
 import '../page/authentication/success_page.dart';
 import '../page/authentication/verify_otp.dart';
 import '../page/edit_profile/edit_profile_page.dart';
-import '../page/happy_deal_reservation/happy_deal_reservation_page.dart';
+import '../page/happy_deals/happy_deal_reservation/happy_deal_reservation_page.dart';
 import '../page/home/home_page.dart';
 import '../page/notification/notification_page.dart';
 import '../page/onboard/onboard_page/onboard_page.dart';
 import '../page/onboard/splash/splash_page.dart';
 import '../page/our_restaurant_page.dart';
 import '../page/product/product_best_seller_page.dart';
-import '../page/happy_deals.dart';
-import '../page/reservation/large_discounts_page.dart';
+import '../page/happy_deals/large_discounts_page.dart';
 import '../page/reservation_history_detail/reservation_detail/bloc/reservation_detail_bloc.dart';
 import '../page/reservation_history_detail/reservation_detail/reservation_detail_page.dart';
 import '../page/reservation_history_detail/reservation_detail/reservation_review_page.dart';
@@ -33,8 +34,8 @@ class RouteGenerator {
       case RouterName.signUpPage:
         return animationRouterPage(page: const SignUpPage());
 
-      case RouterName.happyDeals:
-        return animationRouterPage(page: const HappyDeals());
+      case RouterName.happyDealsPage:
+        return animationRouterPage(page: const HappyDealsPage());
 
       case RouterName.getOTP:
         return animationRouterPage(page: const GetOTP());
@@ -49,13 +50,17 @@ class RouteGenerator {
         return animationRouterPage(page: const SuccessPage());
 
       case RouterName.largeDiscountsPage:
-        return animationRouterPage(page: const LargeDiscountsPage());
+        final HappyDeal happyDeal = settings.arguments as HappyDeal;
+        return animationRouterPage(page: LargeDiscountsPage(happyDeal: happyDeal));
 
       case RouterName.ourRestaurantPage:
         return animationRouterPage(page: const OurRestaurantPage());
 
       case RouterName.happyDealReservationPage:
-        return animationRouterPage(page: const HappyDealReservationPage());
+        final HappyDeal happyDeal = settings.arguments as HappyDeal;
+        return animationRouterPage(page: HappyDealReservationPage(
+          happyDeal: happyDeal,
+        ));
 
       case RouterName.productBestSellerPage:
         return animationRouterPage(page: const ProductBestSellerPage());
@@ -82,7 +87,7 @@ class RouteGenerator {
         return animationRouterPage(page: const ReservationHistoryPage());
 
       case RouterName.reservationDetailPage:
-        final int index = settings.arguments as int; ;
+        final int index = settings.arguments as int;
         return animationRouterPage(
           page: BlocProvider(
             create: (context) => ReservationDetailBloc()

@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
               TitleHomeScreen(
                 title: 'Happy deal',
                 onTap: () {
-                  Navigator.pushNamed(context, RouterName.happyDeals);
+                  Navigator.pushNamed(context, RouterName.happyDealsPage);
                 },
               ),
               SizedBox(
